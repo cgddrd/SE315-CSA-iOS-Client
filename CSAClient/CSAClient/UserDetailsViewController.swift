@@ -10,14 +10,20 @@ import UIKit
 
 class UserDetailsViewController: UIViewController {
     
+    var api : APIController?
+    var user: User?
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
-    var user: User?
-    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    @IBAction func postButtonPressed(sender: AnyObject) {
+        
+        api?.postNewUser();
+        
     }
     
     override func viewDidLoad() {
@@ -25,7 +31,7 @@ class UserDetailsViewController: UIViewController {
         
         self.title = "\(self.user!.firstName) \(self.user!.lastName)"
         
-       nameLabel.text = "\(self.user!.firstName) \(self.user!.lastName)"
+        nameLabel.text = "\(self.user!.firstName) \(self.user!.lastName)"
         
         emailLabel.text = self.user!.emailAddress
     }

@@ -66,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1302" y="638"/>
+            <point key="canvasLocation" x="1390" y="630"/>
         </scene>
         <!--User Details View Controller-->
         <scene sceneID="Ot9-ez-4RX">
@@ -80,7 +80,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hf2-Pa-Izh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hf2-Pa-Izh">
                                 <rect key="frame" x="16" y="238" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -95,7 +95,7 @@
                                     <segue destination="S5g-gf-R8D" kind="presentation" id="eLR-Zq-cIh"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vds-my-WgV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vds-my-WgV">
                                 <rect key="frame" x="16" y="132" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="wHv-WU-CqU"/>
@@ -104,6 +104,15 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gn0-pr-6lX">
+                                <rect key="frame" x="165" y="403" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="postButtonPressed:" destination="uED-Be-y2w" eventType="touchUpInside" id="IKP-tv-C7r"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -121,7 +130,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7O9-CU-nQu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2025" y="638"/>
+            <point key="canvasLocation" x="2169" y="638"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="VC6-Cy-0V4">
@@ -141,7 +150,7 @@
                                     <navigationItem title="Title" id="kiK-Q5-rYr">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="blS-rU-jwI">
                                             <connections>
-                                                <segue destination="uED-Be-y2w" kind="popoverPresentation" popoverAnchorBarButtonItem="blS-rU-jwI" id="brw-m6-hMC">
+                                                <segue destination="vXZ-lx-hvc" kind="popoverPresentation" popoverAnchorBarButtonItem="blS-rU-jwI" id="yUZ-X5-nDL">
                                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                 </segue>
                                             </connections>
@@ -162,7 +171,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zQp-hU-Uj1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2728" y="638"/>
+            <point key="canvasLocation" x="1712" y="-170"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RWN-Dq-xwd">
@@ -184,6 +193,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="brw-m6-hMC"/>
+        <segue reference="yUZ-X5-nDL"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -38,6 +38,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         // CG - Set the 'album' variable of the destination controller ('DetailsViewController') to the currently selected album.
         detailsViewController.user = selectedAlbum
         
+        detailsViewController.api = self.api
+        
     }
     
     // CG - Called by the APIController once the data has been loaded asynchrounously.

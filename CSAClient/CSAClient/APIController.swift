@@ -35,27 +35,45 @@ class APIController {
     
     func postNewUser() {
         
+        let parameters = [
+            "user": [
+                "surname": "swiftlastname2",
+                "firstname": "swiftfirstname2",
+                "phone": "01666841158",
+                "grad_year": 2013,
+                "jobs": false,
+                "email": "swift2@test.com",
+                "password": "test123",
+                "passwordconfirmation": "test123",
+                "login": "swift123"
+                
+            ]
+        ]
         
-        let urlPath = "http://localhost:3000/users"
-        
-        var request = NSMutableURLRequest(URL: NSURL(string: urlPath)!)
-        var session = NSURLSession.sharedSession()
-        request.HTTPMethod = "POST"
-        
-        var params = ["username":"jameson", "password":"password"] as Dictionary<String, String>
-        
-        
-        var err: NSError?
-        
-        println(request.HTTPBody)
+        Alamofire.request(.POST, "http://localhost:3000/users", parameters: parameters).authenticate(user: "admin", password: "taliesin").responseJSON({ (request, response, JSON, error) -> Void in
+            
+           // println(JSON)
+            
+            if response?.statusCode == 200 {
+                
+                
+            }
+            
+            if let object = JSON as? Array<NSDictionary> {
+            
+                println(object)
+                
+            } else if let object = JSON as? NSDictionary {
+                
+                println(object)
+                
+            }
+            
+        })
         
     }
     
     func searchItunesFor(searchTerm: String) {
-        
-        let urlPath = "http://localhost:3000/users/"
-        
-        let url = NSURL(string: urlPath)
         
         Alamofire.request(.GET, "http://localhost:3000/users").authenticate(user: "admin", password: "taliesin").responseJSON({ (_, _, JSON, _) -> Void in
             

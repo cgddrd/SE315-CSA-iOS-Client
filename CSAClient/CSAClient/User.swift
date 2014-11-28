@@ -56,13 +56,13 @@ class User {
                 
                 
                 // CG - If 'var' (not 'let), we need to add '!' to get Optional value out.
-                println(id)
+                /*println(id)
                 println(firstName)
                 println(lastName)
                 println(jobs)
                 println(email)
                 println(gradYear)
-                println(phone)
+                println(phone)*/
                 
                 var newUser = User(id: id, firstName: firstName, lastName: lastName, emailAddress: email, jobs: jobs, phone: phone, gradYear: gradYear)
                 

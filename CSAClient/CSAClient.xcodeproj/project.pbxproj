@@ -11,7 +11,6 @@
 		999C33261A286F2900AF2F82 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 999C33251A286F2900AF2F82 /* Images.xcassets */; };
 		999C33291A286F2900AF2F82 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 999C33271A286F2900AF2F82 /* LaunchScreen.xib */; };
 		999C33351A286F2900AF2F82 /* CSAClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33341A286F2900AF2F82 /* CSAClientTests.swift */; };
-		999C333F1A286F4500AF2F82 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C333E1A286F4500AF2F82 /* APIController.swift */; };
 		999C33411A286F9A00AF2F82 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33401A286F9A00AF2F82 /* SearchResultsViewController.swift */; };
 		999C33451A28714C00AF2F82 /* Blank52.png in Resources */ = {isa = PBXBuildFile; fileRef = 999C33441A28714C00AF2F82 /* Blank52.png */; };
 		999C33471A2871C200AF2F82 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33461A2871C200AF2F82 /* User.swift */; };
@@ -19,6 +18,8 @@
 		999C334B1A28A46600AF2F82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 999C334A1A28A46600AF2F82 /* Main.storyboard */; };
 		999C33621A28BB0A00AF2F82 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999C335F1A28BADF00AF2F82 /* Alamofire.framework */; };
 		999C33631A28BB0A00AF2F82 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 999C335F1A28BADF00AF2F82 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		999C33681A28CB3D00AF2F82 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33671A28CB3D00AF2F82 /* APIController.swift */; };
+		999C336A1A29394F00AF2F82 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33691A29394F00AF2F82 /* TestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,13 +76,14 @@
 		999C332E1A286F2900AF2F82 /* CSAClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CSAClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		999C33331A286F2900AF2F82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		999C33341A286F2900AF2F82 /* CSAClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSAClientTests.swift; sourceTree = "<group>"; };
-		999C333E1A286F4500AF2F82 /* APIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIController.swift; path = ../APIController.swift; sourceTree = "<group>"; };
 		999C33401A286F9A00AF2F82 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		999C33441A28714C00AF2F82 /* Blank52.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blank52.png; sourceTree = "<group>"; };
 		999C33461A2871C200AF2F82 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		999C33481A28923800AF2F82 /* UserDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
 		999C334A1A28A46600AF2F82 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = CSAClientTests/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		999C33591A28BADE00AF2F82 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
+		999C33671A28CB3D00AF2F82 /* APIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
+		999C33691A29394F00AF2F82 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,9 +127,10 @@
 		999C331B1A286F2900AF2F82 /* CSAClient */ = {
 			isa = PBXGroup;
 			children = (
+				999C33671A28CB3D00AF2F82 /* APIController.swift */,
 				999C334A1A28A46600AF2F82 /* Main.storyboard */,
+				999C33691A29394F00AF2F82 /* TestViewController.swift */,
 				999C33441A28714C00AF2F82 /* Blank52.png */,
-				999C333E1A286F4500AF2F82 /* APIController.swift */,
 				999C331E1A286F2900AF2F82 /* AppDelegate.swift */,
 				999C33481A28923800AF2F82 /* UserDetailsViewController.swift */,
 				999C33401A286F9A00AF2F82 /* SearchResultsViewController.swift */,
@@ -302,8 +305,9 @@
 				999C33491A28923800AF2F82 /* UserDetailsViewController.swift in Sources */,
 				999C33411A286F9A00AF2F82 /* SearchResultsViewController.swift in Sources */,
 				999C331F1A286F2900AF2F82 /* AppDelegate.swift in Sources */,
-				999C333F1A286F4500AF2F82 /* APIController.swift in Sources */,
 				999C33471A2871C200AF2F82 /* User.swift in Sources */,
+				999C336A1A29394F00AF2F82 /* TestViewController.swift in Sources */,
+				999C33681A28CB3D00AF2F82 /* APIController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -80,69 +80,24 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
         cell.textLabel.text = "\(user.firstName) \(user.lastName)"
         
-   //     cell.imageView.image = UIImage(named: "Blank52")
-        
-        // CG - Get the formatted price string for display in the subtitle
-        //let formattedPrice: NSString = NSString(format: "£%.2f", rowData["trackPrice"] as Double)
-        
-     //   let formattedPrice = album.price
-        
-        // Jump in to a background thread to get the image for this item
-        
-        // Grab the artworkUrl60 key to get an image URL for the app's thumbnail
-        //let urlString = rowData["artworkUrl60"] as String
-        
-      //  let urlString = album.thumbnailImageURL
-     
-        // Check our image cache for the existing key. This is just a dictionary of UIImages
-      //  var image = self.imageCache[urlString]
-        
-      /*  if( image == nil ) {
-            
-            // If the image does not exist, we need to download it
-            var imgURL: NSURL = NSURL(string: urlString)!
-            
-            // Download an NSData representation of the image at the URL
-            let request: NSURLRequest = NSURLRequest(URL: imgURL)
-            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
-                if error == nil {
-                    image = UIImage(data: data)
-                    
-                    // Store the image in to our cache
-                    self.imageCache[urlString] = image
-                    dispatch_async(dispatch_get_main_queue(), {
-                        if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
-                        //    cellToUpdate.imageView.image = image
-                        }
-                    })
-                }
-                else {
-                    println("Error: \(error.localizedDescription)")
-                }
-            })
-            
-        }
-            
-        // CG - Otherwise if we are able to get our image from the cache.. load it.
-        else {
-            dispatch_async(dispatch_get_main_queue(), {
-                if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
-              //      cellToUpdate.imageView.image = image
-                }
-            })
-        } */
-        
         cell.detailTextLabel?.text = user.emailAddress
         
         return cell
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+      //  self.navigationController?.navigationBar.hidden = true
+        
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // CG - Set the delegate of the 'APIController' object to this class so that we can call the 'didReceiveAPIResults' method from the 'APIController'.
-        //self.api.delegate = self;
+       // self.navigationController?.navigationBar.hidden = true
         
         // CG - Pass in 'SearchResultsViewController' as delegate into APIController constuctor.
         api = APIController(newDelegate: self);

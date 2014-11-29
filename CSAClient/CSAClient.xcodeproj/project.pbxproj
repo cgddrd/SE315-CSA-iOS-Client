@@ -500,6 +500,7 @@
 				999C333A1A286F2900AF2F82 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		999C333B1A286F2900AF2F82 /* Build configuration list for PBXNativeTarget "CSAClientTests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +509,7 @@
 				999C333D1A286F2900AF2F82 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

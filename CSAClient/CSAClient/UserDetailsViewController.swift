@@ -12,7 +12,7 @@ class UserDetailsViewController: UIViewController {
     
     var api : APIController?
     var user: User?
-
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
@@ -22,19 +22,47 @@ class UserDetailsViewController: UIViewController {
     
     @IBAction func postButtonPressed(sender: AnyObject) {
         
-        api?.postNewUser();
-        
-        // CG - Once we have sent the POST request, close this view and return to the "calling" view using the NavigationController.
-        self.navigationController?.popToRootViewControllerAnimated(true);
+        // CG - Callback (closure) for result of POST request.
+        api?.postNewUser({
+            
+            success, result in
+            
+            let alertTitle = success ? "Create New User" : "Error"
+            
+            let alertMessage = success ? "User added successfully" : ", ".join(result["errors"] as Array)
+            
+            var alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(alert) in
+                
+                if (success) {
+                    
+                    // CG - Switch to the main thread in order to access the NavigationController in order to close the AlertView and return to the listing view.
+                    dispatch_async(dispatch_get_main_queue()) { ()
+                        
+                        // CG - Pop to root view controller once user confirms alert.
+                        self.navigationController?.popViewControllerAnimated(true)
+                        
+                    }
+                    
+                }
+                
+            }))
+            
+            // CG - Display the alert view.
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+            
+        })
         
     }
     
     @IBAction func testViewButtonPressed(sender: AnyObject) {
         
-      // CG - If we wanted to load a new ViewController that was part of the NavigationController, we could use the code below.
+        // CG - If we wanted to load a new ViewController that was part of the NavigationController, we could use the code below.
         
-      //  let testView = self.storyboard?.instantiateViewControllerWithIdentifier("TestViewController") as TestViewController
-      //  self.navigationController?.pushViewController(testView, animated: true)
+        //  let testView = self.storyboard?.instantiateViewControllerWithIdentifier("TestViewController") as TestViewController
+        //  self.navigationController?.pushViewController(testView, animated: true)
         
         // CG - However, as we want to load a MODAL view (slide-up), we need to use a slightly different method.
         let vc : TestViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TestViewController") as TestViewController
@@ -46,7 +74,7 @@ class UserDetailsViewController: UIViewController {
         
         super.viewDidLoad()
         
-      //  self.navigationController?.navigationBar.hidden = false
+        //  self.navigationController?.navigationBar.hidden = false
         
         self.title = "\(self.user!.firstName) \(self.user!.lastName)"
         

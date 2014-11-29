@@ -26,14 +26,16 @@ class APIController {
     init(newDelegate: APIControllerProtocol) {
         
         self.delegate = newDelegate
-    
+        
         self.apiManager.session.configuration.HTTPAdditionalHeaders = [
             "Accept": "application/json"
         ]
         
     }
     
-    func postNewUser() {
+    //func postNewUser() {
+    
+    func postNewUser(completionHandler: (Bool, NSDictionary) -> ()) -> ()  {
         
         let parameters = [
             "user": [
@@ -50,23 +52,26 @@ class APIController {
             ]
         ]
         
-        Alamofire.request(.POST, "http://localhost:3000/users", parameters: parameters).authenticate(user: "admin", password: "taliesin").responseJSON({ (request, response, JSON, error) -> Void in
+        Alamofire.request(.POST, "http://localhost:3000/users", parameters: parameters).validate(statusCode: 200 ..< 300).authenticate(user: "admin", password: "taliesin").responseJSON({ (request, response, JSON, error) -> Void in
             
-           // println(JSON)
+            // println(JSON)
             
-            if response?.statusCode == 200 {
+            if (error == nil) {
+                
+                if let object = JSON as? NSDictionary {
+                    
+                    completionHandler(true, object)
+                    
+                }
                 
                 
-            }
-            
-            if let object = JSON as? Array<NSDictionary> {
-            
-                println(object)
+            } else {
                 
-            } else if let object = JSON as? NSDictionary {
-                
-                println(object)
-                
+                if let object = JSON as? NSDictionary {
+                    
+                    completionHandler(false, object)
+                    
+                }
             }
             
         })

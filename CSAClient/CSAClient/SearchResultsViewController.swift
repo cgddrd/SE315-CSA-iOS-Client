@@ -22,23 +22,30 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     // CG - Create an array that contains strictly 'Album' objects.
     var users = [User]()
     
-    
     // CG - Runs before the 'show' segue that moves from the 'SearchResultsController' view to the 'DetailsViewController' view. We are passing in the album info.
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        // CG - Get the destination controller from the segue 'destinationViewController' (which in this case is 'DetailsViewController') and cast it to that type.
-        var detailsViewController: UserDetailsViewController = segue.destinationViewController as UserDetailsViewController
-        
-        // CG - Get the index of the currently selected album (via the UITableView cell)
-        var albumIndex = appsTableView!.indexPathForSelectedRow()!.row
-        
-        //CG - Get the current album from the array (using the index just obtained)
-        var selectedAlbum = self.users[albumIndex]
-        
-        // CG - Set the 'album' variable of the destination controller ('DetailsViewController') to the currently selected album.
-        detailsViewController.user = selectedAlbum
-        
-        detailsViewController.api = self.api
+        if (segue.identifier == "ShowAddUserViewControllerSegue") {
+            
+            var addUserViewController = segue.destinationViewController as UserAddViewController
+            
+            addUserViewController.api = self.api
+            
+        } else if (segue.identifier == "ShowUserDetailsViewControllerSegue") {
+            
+            // CG - Get the index of the currently selected album (via the UITableView cell)
+            var albumIndex = appsTableView!.indexPathForSelectedRow()!.row
+            
+            //CG - Get the current album from the array (using the index just obtained)
+            var selectedAlbum = self.users[albumIndex]
+            
+            var userDetailsViewController = segue.destinationViewController as UserDetailsViewController
+            
+            userDetailsViewController.user = selectedAlbum
+            
+            userDetailsViewController.api = self.api
+            
+        }
         
     }
     
@@ -46,13 +53,10 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     // The APIControllerProtocol method
     func didReceiveAPIResults(results: Array<NSDictionary>) {
         
-     //   var resultsArr: NSArray = results[0] as NSArray
-        
         // CG - Return to the main thread in order to parse the JSON results and update the UI.
         dispatch_async(dispatch_get_main_queue(), {
             
             // Call STATIC method within 'Album' class to convert JSON into array of 'Album' objects.
-            
             self.users = User.usersWithJSON(results)
             
             self.appsTableView!.reloadData()
@@ -73,11 +77,9 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as UITableViewCell
-        
-       // var rowData: NSDictionary = self.tableData[indexPath.row] as NSDictionary
-        
-        let user = self.users[indexPath.row];
     
+        let user = self.users[indexPath.row];
+        
         cell.textLabel.text = "\(user.firstName) \(user.lastName)"
         
         cell.detailTextLabel?.text = user.emailAddress
@@ -87,27 +89,86 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
-      //  self.navigationController?.navigationBar.hidden = true
+        // CG - Pass in 'SearchResultsViewController' as delegate into APIController constuctor.
+        self.api = APIController(newDelegate: self);
+        
+        // CG - Show the network activity icon in the status bar.
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true;
+    
+        self.api?.getUsers(urlParams: nil, completionHandler: {
+            
+            success, result in
+            
+            if result != nil {
+                
+                if (success) {
+                    
+                    // CG - Switch to the main thread in order to access the NavigationController in order to close the AlertView and return to the listing view.
+                    dispatch_async(dispatch_get_main_queue()) { ()
+                        
+                        // CG - Pop to root view controller once user confirms alert.
+                        self.didReceiveAPIResults(result!);
+                        
+                    }
+                    
+                } else {
+                    
+                    let alertTitle = "Error"
+                    
+                    let alertMessage = "\n\n".join(result![0]["errors"] as Array)
+
+                    // Create the alert controller
+                    var alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .Alert)
+
+                    // Create the actions
+                    var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                    
+                    // Add the actions
+                    alertController.addAction(okAction)
+                    
+                    // CG - Display the alert view.
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                    
+                }
+                
+            } else {
+                
+                let alertTitle = "Error"
+                
+                let alertMessage = "Cannot load data"
+                
+                // Create the alert controller
+                var alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .Alert)
+                
+                // Create the actions
+                var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { UIAlertAction in
+                   // NSLog("OK Pressed")
+                    
+                     exit(0)
+                }
+                
+                // Add the actions
+                alertController.addAction(okAction)
+                
+                // CG - Display the alert view.
+                self.presentViewController(alertController, animated: true, completion: nil)
+                
+            }
+            
+        })
         
     }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-       // self.navigationController?.navigationBar.hidden = true
-        
-        // CG - Pass in 'SearchResultsViewController' as delegate into APIController constuctor.
-        api = APIController(newDelegate: self);
-        
-        // CG - Show the network activity icon in the status bar.
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true;
-        
-        // CG - We now need to force unwrap the 'api' Optional variable value in order to call its 'searchItunesFor()' method.
-        api!.searchItunesFor("Avicii")
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

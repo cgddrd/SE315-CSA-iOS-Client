@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		996B65401A29ED9500A556DC /* UserAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996B653F1A29ED9500A556DC /* UserAddViewController.swift */; };
 		999C331F1A286F2900AF2F82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C331E1A286F2900AF2F82 /* AppDelegate.swift */; };
 		999C33261A286F2900AF2F82 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 999C33251A286F2900AF2F82 /* Images.xcassets */; };
 		999C33291A286F2900AF2F82 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 999C33271A286F2900AF2F82 /* LaunchScreen.xib */; };
@@ -20,6 +21,7 @@
 		999C33631A28BB0A00AF2F82 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 999C335F1A28BADF00AF2F82 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		999C33681A28CB3D00AF2F82 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33671A28CB3D00AF2F82 /* APIController.swift */; };
 		999C336A1A29394F00AF2F82 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33691A29394F00AF2F82 /* TestViewController.swift */; };
+		99A0D14A1A2B2A7F0074EABD /* InternalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0D1491A2B2A7F0074EABD /* InternalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		996B653F1A29ED9500A556DC /* UserAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAddViewController.swift; sourceTree = "<group>"; };
 		999C33191A286F2900AF2F82 /* CSAClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSAClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		999C331D1A286F2900AF2F82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		999C331E1A286F2900AF2F82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +87,7 @@
 		999C33591A28BADE00AF2F82 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		999C33671A28CB3D00AF2F82 /* APIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		999C33691A29394F00AF2F82 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		99A0D1491A2B2A7F0074EABD /* InternalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,7 @@
 		999C331B1A286F2900AF2F82 /* CSAClient */ = {
 			isa = PBXGroup;
 			children = (
+				996B653F1A29ED9500A556DC /* UserAddViewController.swift */,
 				999C33671A28CB3D00AF2F82 /* APIController.swift */,
 				999C334A1A28A46600AF2F82 /* Main.storyboard */,
 				999C33691A29394F00AF2F82 /* TestViewController.swift */,
@@ -135,6 +140,7 @@
 				999C33481A28923800AF2F82 /* UserDetailsViewController.swift */,
 				999C33401A286F9A00AF2F82 /* SearchResultsViewController.swift */,
 				999C33461A2871C200AF2F82 /* User.swift */,
+				99A0D1491A2B2A7F0074EABD /* InternalViewController.swift */,
 				999C33251A286F2900AF2F82 /* Images.xcassets */,
 				999C33271A286F2900AF2F82 /* LaunchScreen.xib */,
 				999C331C1A286F2900AF2F82 /* Supporting Files */,
@@ -302,8 +308,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				996B65401A29ED9500A556DC /* UserAddViewController.swift in Sources */,
 				999C33491A28923800AF2F82 /* UserDetailsViewController.swift in Sources */,
 				999C33411A286F9A00AF2F82 /* SearchResultsViewController.swift in Sources */,
+				99A0D14A1A2B2A7F0074EABD /* InternalViewController.swift in Sources */,
 				999C331F1A286F2900AF2F82 /* AppDelegate.swift in Sources */,
 				999C33471A2871C200AF2F82 /* User.swift in Sources */,
 				999C336A1A29394F00AF2F82 /* TestViewController.swift in Sources */,

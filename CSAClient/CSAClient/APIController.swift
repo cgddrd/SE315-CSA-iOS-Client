@@ -33,28 +33,9 @@ class APIController {
         
     }
     
-    //func postNewUser() {
-    
-    func postNewUser(completionHandler: (Bool, NSDictionary) -> ()) -> ()  {
+    func postNewUser(urlParams: [String: AnyObject]? = nil, completionHandler: (Bool, NSDictionary) -> ()) -> ()  {
         
-        let parameters = [
-            "user": [
-                "surname": "swiftlastname2",
-                "firstname": "swiftfirstname2",
-                "phone": "01666841158",
-                "grad_year": 2013,
-                "jobs": false,
-                "email": "swift2@test.com",
-                "password": "test123",
-                "passwordconfirmation": "test123",
-                "login": "swift123"
-                
-            ]
-        ]
-        
-        Alamofire.request(.POST, "http://localhost:3000/users", parameters: parameters).validate(statusCode: 200 ..< 300).authenticate(user: "admin", password: "taliesin").responseJSON({ (request, response, JSON, error) -> Void in
-            
-            // println(JSON)
+        Alamofire.request(.POST, "http://localhost:3000/users", parameters: urlParams).validate(statusCode: 200 ..< 300).authenticate(user: "admin", password: "taliesin").responseJSON({ (request, response, JSON, error) -> Void in
             
             if (error == nil) {
                 
@@ -72,6 +53,28 @@ class APIController {
                     completionHandler(false, object)
                     
                 }
+            }
+            
+        })
+        
+    }
+    
+    func getUsers(urlParams: [String: AnyObject]? = nil, completionHandler: (Bool, Array<NSDictionary>?) -> ()) -> ()  {
+        
+        Alamofire.request(.GET, "http://localhost:3000/users", parameters: urlParams).validate(statusCode: 200 ..< 300).authenticate(user: "admin", password: "taliesin").responseJSON({ (request, response, JSON, error) -> Void in
+            
+            if (error == nil) {
+                
+                if let object = JSON as? Array<NSDictionary> {
+            
+                    completionHandler(true, object)
+                    
+                }
+                
+                
+            } else {
+                
+                    completionHandler(false, JSON as? Array<NSDictionary>)
             }
             
         })

@@ -23,7 +23,7 @@ class UserDetailsViewController: UIViewController {
     @IBAction func postButtonPressed(sender: AnyObject) {
         
         // CG - Callback (closure) for result of POST request.
-        api?.postNewUser({
+         /* api?.postNewUser({
             
             success, result in
             
@@ -53,7 +53,7 @@ class UserDetailsViewController: UIViewController {
             self.presentViewController(alert, animated: true, completion: nil)
             
             
-        })
+        }) */
         
     }
     

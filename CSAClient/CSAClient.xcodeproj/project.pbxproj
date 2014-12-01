@@ -22,6 +22,8 @@
 		999C33681A28CB3D00AF2F82 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33671A28CB3D00AF2F82 /* APIController.swift */; };
 		999C336A1A29394F00AF2F82 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33691A29394F00AF2F82 /* TestViewController.swift */; };
 		99A0D14A1A2B2A7F0074EABD /* InternalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0D1491A2B2A7F0074EABD /* InternalViewController.swift */; };
+		99B3DD951A2BC2400011153D /* InternalUserDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3DD941A2BC2400011153D /* InternalUserDetailsController.swift */; };
+		99B3DD981A2CB0030011153D /* InternalUserEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3DD971A2CB0030011153D /* InternalUserEditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		999C33671A28CB3D00AF2F82 /* APIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		999C33691A29394F00AF2F82 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		99A0D1491A2B2A7F0074EABD /* InternalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalViewController.swift; sourceTree = "<group>"; };
+		99B3DD941A2BC2400011153D /* InternalUserDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalUserDetailsController.swift; sourceTree = "<group>"; };
+		99B3DD971A2CB0030011153D /* InternalUserEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalUserEditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,8 @@
 				999C33401A286F9A00AF2F82 /* SearchResultsViewController.swift */,
 				999C33461A2871C200AF2F82 /* User.swift */,
 				99A0D1491A2B2A7F0074EABD /* InternalViewController.swift */,
+				99B3DD941A2BC2400011153D /* InternalUserDetailsController.swift */,
+				99B3DD971A2CB0030011153D /* InternalUserEditViewController.swift */,
 				999C33251A286F2900AF2F82 /* Images.xcassets */,
 				999C33271A286F2900AF2F82 /* LaunchScreen.xib */,
 				999C331C1A286F2900AF2F82 /* Supporting Files */,
@@ -309,8 +315,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				996B65401A29ED9500A556DC /* UserAddViewController.swift in Sources */,
+				99B3DD951A2BC2400011153D /* InternalUserDetailsController.swift in Sources */,
 				999C33491A28923800AF2F82 /* UserDetailsViewController.swift in Sources */,
 				999C33411A286F9A00AF2F82 /* SearchResultsViewController.swift in Sources */,
+				99B3DD981A2CB0030011153D /* InternalUserEditViewController.swift in Sources */,
 				99A0D14A1A2B2A7F0074EABD /* InternalViewController.swift in Sources */,
 				999C331F1A286F2900AF2F82 /* AppDelegate.swift in Sources */,
 				999C33471A2871C200AF2F82 /* User.swift in Sources */,

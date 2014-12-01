@@ -12,10 +12,9 @@ class UserDetailsViewController: UIViewController {
     
     var api : APIController?
     var user: User?
-    
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    
+    var internalViewController : InternalUserDetailsController?
+
+
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -74,13 +73,28 @@ class UserDetailsViewController: UIViewController {
         
         super.viewDidLoad()
         
-        //  self.navigationController?.navigationBar.hidden = false
-        
         self.title = "\(self.user!.firstName) \(self.user!.lastName)"
         
-        nameLabel.text = "\(self.user!.firstName) \(self.user!.lastName)"
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        emailLabel.text = self.user!.emailAddress
+        
+        if (segue.identifier == "embedUserDetailsSegue") {
+            
+            self.internalViewController = segue.destinationViewController as? InternalUserDetailsController
+            
+            self.internalViewController?.user = self.user
+            
+        } else if (segue.identifier == "editUserSegue") {
+            
+            var editUserController = segue.destinationViewController as? InternalUserEditViewController
+            
+            editUserController?.user = self.user
+            editUserController?.api = self.api
+            
+        }
+        
     }
 }
 

@@ -25,8 +25,6 @@ class UserAddViewController: UIViewController {
     
     @IBAction func pressedDoneButton(sender: AnyObject) {
         
-        var emptyField = false
-        
         var view = self.internalViewController
         
         /*for subview in view?.view.subviews as [UIView] {
@@ -64,10 +62,11 @@ class UserAddViewController: UIViewController {
                     "grad_year": "\(view!.textGradYear!.text)",
                     "jobs": "\(view!.switchJobs!.on)",
                     "email": "\(view!.textEmailAddress!.text)",
-                    "password": "\(view!.textPassword!.text)",
-                    "passwordconfirmation": "\(view!.textPasswordConfirmation!.text)",
-                    "login": "\(view!.textUsername!.text)"
-                    
+                    "user_detail_attributes": [
+                        "password": "\(view!.textPassword!.text)",
+                        "passwordconfirmation": "\(view!.textPasswordConfirmation!.text)",
+                        "login": "\(view!.textUsername!.text)"
+                    ]
                 ]
             ]
             

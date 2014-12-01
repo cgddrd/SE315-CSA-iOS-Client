@@ -17,10 +17,11 @@ class User {
     var emailAddress: String
     var jobs: Bool
     var phone: String
+    var login: String
     var gradYear: Int
     
     // CG - Class constructor.
-    init(id: Int, firstName: String, lastName: String, emailAddress: String, jobs: Bool, phone: String, gradYear: Int) {
+    init(id: Int, firstName: String, lastName: String, emailAddress: String, jobs: Bool, phone: String, gradYear: Int, login: String) {
         self.id = id
         self.firstName = firstName
         self.lastName = lastName
@@ -28,6 +29,7 @@ class User {
         self.jobs = jobs
         self.phone = phone
         self.gradYear = gradYear
+        self.login = login
     }
     
     class func usersWithJSON(allResults: Array<NSDictionary>) -> [User] {
@@ -37,34 +39,26 @@ class User {
         
         // Store the results in our table data array
         if allResults.count > 0 {
-            
+
             for result in allResults {
                 
                 let id = result["id"] as? Int ?? -1
                 
-                let firstName = result["firstname"] as? String ?? ""
+                let firstName = result["firstname"] as? String ?? "N/A"
                 
-                let lastName = result["surname"] as? String ?? ""
+                let lastName = result["surname"] as? String ?? "N/A"
                 
                 let jobs = result["jobs"] as? Bool ?? false
                 
-                let email = result["email"] as? String ?? ""
+                let email = result["email"] as? String ?? "N/A"
                 
                 let gradYear = result["grad_year"] as? Int ?? -1
                 
-                let phone = result["phone"] as? String ?? ""
+                let phone = result["phone"] as? String ?? "N/A"
                 
+                let login = result["login"] as? String ?? "N/A"
                 
-                // CG - If 'var' (not 'let), we need to add '!' to get Optional value out.
-                /*println(id)
-                println(firstName)
-                println(lastName)
-                println(jobs)
-                println(email)
-                println(gradYear)
-                println(phone)*/
-                
-                var newUser = User(id: id, firstName: firstName, lastName: lastName, emailAddress: email, jobs: jobs, phone: phone, gradYear: gradYear)
+                var newUser = User(id: id, firstName: firstName, lastName: lastName, emailAddress: email, jobs: jobs, phone: phone, gradYear: gradYear, login: login)
                 
                 users.append(newUser)
             }

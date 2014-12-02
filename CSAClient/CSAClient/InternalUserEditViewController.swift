@@ -9,7 +9,7 @@
 import UIKit
 
 class InternalUserEditViewController: UITableViewController {
-
+    
     var api : APIController?
     var user: User?
     
@@ -31,10 +31,73 @@ class InternalUserEditViewController: UITableViewController {
         self.textGradYear.text = String(self.user!.gradYear)
         self.switchJobs.on = self.user!.jobs
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func test() {
+        
+        // Notice here how we are not having to pass any URL parameters in, default parameter in the function declaration deals with this for us.
+        self.api?.deleteUser(self.user!.id, completionHandler: {
+            
+            success, result in
+            
+            let alertTitle = success ? "Delete User" : "Error"
+            var alertMessage: String
+            
+            if success {
+                
+                alertMessage = "User deleted successfully."
+                
+            } else {
+                
+                alertMessage = (result != nil && result?["errors"] != nil) ? "\n\n".join(result!["errors"] as Array) : "An unknown error has occured."
+                
+            }
+            
+            var alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(alert) in
+                
+                if (success) {
+                    
+                    // CG - Switch to the main thread in order to access the NavigationController in order to close the AlertView and return to the listing view.
+                    dispatch_async(dispatch_get_main_queue()) { ()
+                        
+                        // CG - Pop to root view controller once user confirms alert.
+                        self.navigationController?.popToRootViewControllerAnimated(true)
+                        
+                        
+                        
+                    }
+                    
+                }
+                
+            }))
+            
+            // CG - Display the alert view.
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        })
+        
+    }
+    
+    @IBAction func pressedDeleteButton(sender: AnyObject) {
+        
+        var refreshAlert = UIAlertController(title: "Delete User", message: "Are you sure you wish to delete the user?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
+
+        refreshAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(refreshAlert) in
+            
+            self.test()
+            
+        }))
+        
+        presentViewController(refreshAlert, animated: true, completion: nil)
+        
     }
     
     @IBAction func pressedSaveButton(sender: AnyObject) {
@@ -60,7 +123,7 @@ class InternalUserEditViewController: UITableViewController {
             if success {
                 
                 alertMessage = "User updated successfully."
-            
+                
             } else {
                 
                 alertMessage = (result != nil && result?["errors"] != nil) ? "\n\n".join(result!["errors"] as Array) : "An unknown error has occured."
@@ -77,7 +140,7 @@ class InternalUserEditViewController: UITableViewController {
                     dispatch_async(dispatch_get_main_queue()) { ()
                         
                         // CG - Pop to root view controller once user confirms alert.
-                      //  self.dismissViewControllerAnimated(true, completion: {})
+                        //  self.dismissViewControllerAnimated(true, completion: {})
                         
                         self.navigationController?.popToRootViewControllerAnimated(true)
                         

@@ -24,6 +24,8 @@
 		99A0D14A1A2B2A7F0074EABD /* InternalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0D1491A2B2A7F0074EABD /* InternalViewController.swift */; };
 		99B3DD951A2BC2400011153D /* InternalUserDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3DD941A2BC2400011153D /* InternalUserDetailsController.swift */; };
 		99B3DD981A2CB0030011153D /* InternalUserEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3DD971A2CB0030011153D /* InternalUserEditViewController.swift */; };
+		99B3DD9C1A2D25970011153D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3DD9B1A2D25970011153D /* LoginViewController.swift */; };
+		99B3DD9E1A2D26BB0011153D /* aber_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 99B3DD9D1A2D26BB0011153D /* aber_logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +75,7 @@
 
 /* Begin PBXFileReference section */
 		996B653F1A29ED9500A556DC /* UserAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAddViewController.swift; sourceTree = "<group>"; };
-		999C33191A286F2900AF2F82 /* CSAClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSAClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		999C33191A286F2900AF2F82 /* Aber CSA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aber CSA.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		999C331D1A286F2900AF2F82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		999C331E1A286F2900AF2F82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		999C33251A286F2900AF2F82 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -92,6 +94,8 @@
 		99A0D1491A2B2A7F0074EABD /* InternalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalViewController.swift; sourceTree = "<group>"; };
 		99B3DD941A2BC2400011153D /* InternalUserDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalUserDetailsController.swift; sourceTree = "<group>"; };
 		99B3DD971A2CB0030011153D /* InternalUserEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalUserEditViewController.swift; sourceTree = "<group>"; };
+		99B3DD9B1A2D25970011153D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		99B3DD9D1A2D26BB0011153D /* aber_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aber_logo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +130,7 @@
 		999C331A1A286F2900AF2F82 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				999C33191A286F2900AF2F82 /* CSAClient.app */,
+				999C33191A286F2900AF2F82 /* Aber CSA.app */,
 				999C332E1A286F2900AF2F82 /* CSAClientTests.xctest */,
 			);
 			name = Products;
@@ -135,6 +139,7 @@
 		999C331B1A286F2900AF2F82 /* CSAClient */ = {
 			isa = PBXGroup;
 			children = (
+				99B3DD9D1A2D26BB0011153D /* aber_logo.png */,
 				996B653F1A29ED9500A556DC /* UserAddViewController.swift */,
 				999C33671A28CB3D00AF2F82 /* APIController.swift */,
 				999C334A1A28A46600AF2F82 /* Main.storyboard */,
@@ -147,6 +152,7 @@
 				99A0D1491A2B2A7F0074EABD /* InternalViewController.swift */,
 				99B3DD941A2BC2400011153D /* InternalUserDetailsController.swift */,
 				99B3DD971A2CB0030011153D /* InternalUserEditViewController.swift */,
+				99B3DD9B1A2D25970011153D /* LoginViewController.swift */,
 				999C33251A286F2900AF2F82 /* Images.xcassets */,
 				999C33271A286F2900AF2F82 /* LaunchScreen.xib */,
 				999C331C1A286F2900AF2F82 /* Supporting Files */,
@@ -207,7 +213,7 @@
 			);
 			name = CSAClient;
 			productName = CSAClient;
-			productReference = 999C33191A286F2900AF2F82 /* CSAClient.app */;
+			productReference = 999C33191A286F2900AF2F82 /* Aber CSA.app */;
 			productType = "com.apple.product-type.application";
 		};
 		999C332D1A286F2900AF2F82 /* CSAClientTests */ = {
@@ -295,6 +301,7 @@
 			files = (
 				999C33451A28714C00AF2F82 /* Blank52.png in Resources */,
 				999C33291A286F2900AF2F82 /* LaunchScreen.xib in Resources */,
+				99B3DD9E1A2D26BB0011153D /* aber_logo.png in Resources */,
 				999C33261A286F2900AF2F82 /* Images.xcassets in Resources */,
 				999C334B1A28A46600AF2F82 /* Main.storyboard in Resources */,
 			);
@@ -324,6 +331,7 @@
 				999C33471A2871C200AF2F82 /* User.swift in Sources */,
 				999C336A1A29394F00AF2F82 /* TestViewController.swift in Sources */,
 				999C33681A28CB3D00AF2F82 /* APIController.swift in Sources */,
+				99B3DD9C1A2D25970011153D /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,7 +454,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = CSAClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Aber CSA";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -458,7 +466,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = CSAClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Aber CSA";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

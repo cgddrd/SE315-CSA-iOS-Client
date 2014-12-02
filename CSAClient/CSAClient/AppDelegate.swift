@@ -9,13 +9,40 @@
 import UIKit
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        var credentials = NSUserDefaults.standardUserDefaults().objectForKey("Credentials") as? String
+        
+        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+        var root = storyboard.instantiateViewControllerWithIdentifier("NavController") as UINavigationController
+        
+        if (credentials != nil) {
+            
+            var api = APIController(credentials: credentials!)
+            
+            var initialViewController = storyboard.instantiateViewControllerWithIdentifier("SearchResultsViewController") as SearchResultsViewController
+            
+            initialViewController.api = api
+            
+            var viewControllers: NSArray = [initialViewController];
+            
+            root.setViewControllers(viewControllers, animated: false)
+            root.navigationController?.setViewControllers(viewControllers, animated: false)
+            
+        }
+        
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        self.window?.rootViewController = root
+        
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 

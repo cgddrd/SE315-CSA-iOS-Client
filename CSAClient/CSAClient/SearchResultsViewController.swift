@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, APIControllerProtocol {
+class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate /*,APIControllerProtocol*/ {
     
     var api : APIController?
     
@@ -19,7 +19,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBOutlet weak var appsTableView: UITableView!
     
-    // CG - Create an array that contains strictly 'Album' objects.
+    // CG - Create an array that contains strictly 'User' objects.
     var users = [User]()
     
     // CG - Runs before the 'show' segue that moves from the 'SearchResultsController' view to the 'DetailsViewController' view. We are passing in the album info.
@@ -49,23 +49,6 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         
     }
     
-    // CG - Called by the APIController once the data has been loaded asynchrounously.
-    // The APIControllerProtocol method
-    func didReceiveAPIResults(results: Array<NSDictionary>) {
-        
-        // CG - Return to the main thread in order to parse the JSON results and update the UI.
-        dispatch_async(dispatch_get_main_queue(), {
-            
-            // Call STATIC method within 'Album' class to convert JSON into array of 'Album' objects.
-            self.users = User.usersWithJSON(results)
-            
-            self.appsTableView!.reloadData()
-            
-            // CG - Turn off the network indicator - networking is finished by this point.
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-        })
-    }
-    
     // CG - Simply return the number of resultant objects from the UITableView data store.
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -92,13 +75,21 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     override func viewWillAppear(animated: Bool) {
+        
         super.viewWillAppear(animated)
         
+        // CG - Prevent the 'back' button from showing after going through the login screen.
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        
         // CG - Pass in 'SearchResultsViewController' as delegate into APIController constuctor.
-        self.api = APIController(newDelegate: self);
+       // self.api = APIController(newDelegate: self);
+        
+       // self.api = APIController()
         
         // CG - Show the network activity icon in the status bar.
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true;
+        
+        //println(self.api?.credentials)
     
         self.api?.getUsers(urlParams: nil, completionHandler: {
             
@@ -109,12 +100,23 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                 if (success) {
                     
                     // CG - Switch to the main thread in order to access the NavigationController in order to close the AlertView and return to the listing view.
-                    dispatch_async(dispatch_get_main_queue()) { ()
+                   // dispatch_async(dispatch_get_main_queue()) { ()
                         
-                        // CG - Pop to root view controller once user confirms alert.
-                        self.didReceiveAPIResults(result!);
+                       // self.didReceiveAPIResults(result!);
                         
-                    }
+                        // CG - Return to the main thread in order to parse the JSON results and update the UI.
+                        dispatch_async(dispatch_get_main_queue(), {
+                            
+                            // Call STATIC method within 'Album' class to convert JSON into array of 'Album' objects.
+                            self.users = User.usersWithJSON(result!)
+                            
+                            self.appsTableView!.reloadData()
+                            
+                            // CG - Turn off the network indicator - networking is finished by this point.
+                            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                        })
+                        
+                    //}
                     
                 } else {
                     

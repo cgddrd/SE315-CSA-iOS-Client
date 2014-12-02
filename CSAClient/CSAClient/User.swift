@@ -92,9 +92,7 @@ class User {
             
             newUser = User(id: id, firstName: firstName, lastName: lastName, emailAddress: email, jobs: jobs, phone: phone, gradYear: gradYear, login: login)
             
-            
         }
-        
         
         // CG - Return optional value with either a new User object, or 'nil'.
         return newUser?

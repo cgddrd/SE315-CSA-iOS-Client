@@ -12,6 +12,7 @@ class InternalUserEditViewController: UITableViewController {
     
     var api : APIController?
     var user: User?
+    var currentUserID: Int?
     
     @IBOutlet var switchJobs: UISwitch!
     @IBOutlet var textGradYear: UITextField!
@@ -20,16 +21,49 @@ class InternalUserEditViewController: UITableViewController {
     @IBOutlet var textSurname: UITextField!
     @IBOutlet var textFirstname: UITextField!
     
+    override func viewWillAppear(animated: Bool) {
+        
+        self.api?.getUser(self.currentUserID!, completionHandler: { success, result in
+            
+            if success {
+                
+                self.user = User.singleUser(result)
+                
+                self.title = "\(self.user!.firstName) \(self.user!.lastName)"
+                
+                self.textFirstname.text = self.user?.firstName as String!
+                self.textSurname.text = self.user?.lastName as String!
+                self.textEmailAddress.text = self.user?.emailAddress as String!
+                self.textTelephoneNumber.text = self.user?.phone as String!
+                self.textGradYear.text = String(self.user!.gradYear)
+                self.switchJobs.on = self.user!.jobs
+                
+            } else {
+                
+                let alertTitle = "Error"
+                
+                let alertMessage = (result != nil && result?["errors"] != nil) ? "\n\n".join(result!["errors"] as Array) : "An unknown error has occured."
+                
+                var alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(alert) in
+                    
+                    // CG - If we can't load data, just close the app.
+                    exit(0)
+                    
+                }))
+                
+                // CG - Display the alert view.
+                self.presentViewController(alert, animated: true, completion: nil)
+                
+            }
+            
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "\(self.user!.firstName) \(self.user!.lastName)"
         
-        self.textFirstname.text = self.user?.firstName as String!
-        self.textSurname.text = self.user?.lastName as String!
-        self.textEmailAddress.text = self.user?.emailAddress as String!
-        self.textTelephoneNumber.text = self.user?.phone as String!
-        self.textGradYear.text = String(self.user!.gradYear)
-        self.switchJobs.on = self.user!.jobs
     }
     
     override func didReceiveMemoryWarning() {

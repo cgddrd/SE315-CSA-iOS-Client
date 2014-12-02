@@ -66,7 +66,7 @@ class APIController {
                 
             } else if (response!.statusCode == 401) {
                 
-                completionHandler(false, ["errors" :["User not permitted."]])
+                completionHandler(false, ["errors" :["Incorrect username or password, please try again."]])
                 
             } else {
                 

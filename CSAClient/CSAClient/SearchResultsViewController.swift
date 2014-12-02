@@ -34,16 +34,17 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         } else if (segue.identifier == "ShowUserDetailsViewControllerSegue") {
             
             // CG - Get the index of the currently selected album (via the UITableView cell)
-            var albumIndex = appsTableView!.indexPathForSelectedRow()!.row
+            var userIndex = appsTableView!.indexPathForSelectedRow()!.row
             
             //CG - Get the current album from the array (using the index just obtained)
-            var selectedAlbum = self.users[albumIndex]
+            var selectedUser = self.users[userIndex]
             
             var userDetailsViewController = segue.destinationViewController as UserDetailsViewController
             
-            userDetailsViewController.user = selectedAlbum
-            
             userDetailsViewController.api = self.api
+            
+            userDetailsViewController.currentUserID = selectedUser.id
+            
             
         }
         

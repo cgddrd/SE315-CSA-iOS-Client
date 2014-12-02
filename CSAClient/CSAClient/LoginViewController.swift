@@ -74,7 +74,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate/*, APIControlle
                         
                     } else {
                         
+                        let displayView = self.storyboard?.instantiateViewControllerWithIdentifier("UserDetailsViewController") as UserDetailsViewController
+                        
+                        displayView.api = self.api;
+                        
+                        displayView.currentUserID = NSUserDefaults.standardUserDefaults().objectForKey("UserID") as Int!
+                        
                         println("Not an admin")
+                        
+                        var viewControllers: NSArray = [displayView];
+                        self.navigationController?.setViewControllers(viewControllers, animated: true)
+                        
+                        self.navigationController?.popToRootViewControllerAnimated(true)
+                        
                     }
                 }
                 

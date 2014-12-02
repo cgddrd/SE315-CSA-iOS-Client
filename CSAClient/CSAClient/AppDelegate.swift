@@ -26,15 +26,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             var api = APIController(credentials: credentials!)
             
-            var initialViewController = storyboard.instantiateViewControllerWithIdentifier("SearchResultsViewController") as SearchResultsViewController
-            
-            initialViewController.api = api
-            
-            var viewControllers: NSArray = [initialViewController];
-            
-            root.setViewControllers(viewControllers, animated: false)
-            root.navigationController?.setViewControllers(viewControllers, animated: false)
-            
+            if let isadmin = NSUserDefaults.standardUserDefaults().objectForKey("UserIsAdmin") as Bool! {
+                
+                if isadmin {
+                
+                    var initialViewController = storyboard.instantiateViewControllerWithIdentifier("SearchResultsViewController") as SearchResultsViewController
+                    
+                    initialViewController.api = api
+                    
+                    var viewControllers: NSArray = [initialViewController];
+                    
+                    root.setViewControllers(viewControllers, animated: false)
+                    root.navigationController?.setViewControllers(viewControllers, animated: false)
+                    
+                } else {
+                    
+                    var initialViewController = storyboard.instantiateViewControllerWithIdentifier("UserDetailsViewController") as UserDetailsViewController
+                    
+                    initialViewController.api = api
+                    
+                    initialViewController.currentUserID = NSUserDefaults.standardUserDefaults().objectForKey("UserID") as Int!
+                    
+                    var viewControllers: NSArray = [initialViewController];
+                    
+                    root.setViewControllers(viewControllers, animated: false)
+                    root.navigationController?.setViewControllers(viewControllers, animated: false)
+                    
+                }
+            }
+        
         }
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)

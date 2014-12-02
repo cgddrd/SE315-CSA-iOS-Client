@@ -78,18 +78,14 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         
         super.viewWillAppear(animated)
         
+        self.navigationController?.setViewControllers([self] as NSArray, animated: true)
+        
         // CG - Prevent the 'back' button from showing after going through the login screen.
         self.navigationItem.setHidesBackButton(true, animated: true)
-        
-        // CG - Pass in 'SearchResultsViewController' as delegate into APIController constuctor.
-       // self.api = APIController(newDelegate: self);
-        
-       // self.api = APIController()
         
         // CG - Show the network activity icon in the status bar.
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true;
         
-        //println(self.api?.credentials)
     
         self.api?.getUsers(urlParams: nil, completionHandler: {
             
@@ -98,11 +94,6 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             if result != nil {
                 
                 if (success) {
-                    
-                    // CG - Switch to the main thread in order to access the NavigationController in order to close the AlertView and return to the listing view.
-                   // dispatch_async(dispatch_get_main_queue()) { ()
-                        
-                       // self.didReceiveAPIResults(result!);
                         
                         // CG - Return to the main thread in order to parse the JSON results and update the UI.
                         dispatch_async(dispatch_get_main_queue(), {

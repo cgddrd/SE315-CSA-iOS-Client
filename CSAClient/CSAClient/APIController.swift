@@ -191,4 +191,28 @@ class APIController {
         
     }
     
+    func getUser(userID: Int, urlParams: [String: AnyObject]? = nil, completionHandler: (Bool, NSDictionary?) -> ()) -> ()  {
+        
+        self.apiManager.session.configuration.HTTPAdditionalHeaders!["Authorization"] = "Basic \(self.credentials!)"
+        
+        Alamofire.request(.GET, "http://localhost:3000/users/\(userID)", parameters: urlParams).validate(statusCode: 200 ..< 300).responseJSON({ (request, response, JSON, error) -> Void in
+            
+            if (error == nil) {
+                
+                if let object = JSON as? NSDictionary {
+                    
+                    completionHandler(true, object)
+                    
+                }
+                
+                
+            } else {
+                
+                completionHandler(false, JSON as? NSDictionary)
+            }
+            
+        })
+        
+    }
+    
 }

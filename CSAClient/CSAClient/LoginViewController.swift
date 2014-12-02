@@ -16,19 +16,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate/*, APIControlle
     @IBOutlet weak var textPassword: UITextField!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        //self.api = APIController(newDelegate: self);
         
         self.api = APIController(credentials: nil)
         
-      //  self.textPassword.delegate = self
     }
-    
-   /* func textFieldShouldReturn(textField: UITextField!) -> Bool // called when 'return' key pressed. return NO to ignore.
-    {
-        textField.resignFirstResponder()
-        return true;
-    } */
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         self.view.endEditing(true)
@@ -58,7 +51,32 @@ class LoginViewController: UIViewController, UITextFieldDelegate/*, APIControlle
                 
                 testView.api = self.api;
                 
-                self.navigationController?.pushViewController(testView, animated: true)
+                if (result != nil) {
+                    
+                    NSUserDefaults.standardUserDefaults().setObject(result!["is_admin"] as? Bool, forKey: "UserIsAdmin")
+                    NSUserDefaults.standardUserDefaults().setObject(result!["id"] as? Int, forKey: "UserID")
+                    NSUserDefaults.standardUserDefaults().synchronize()
+                    
+                }
+                
+                if let isadmin = NSUserDefaults.standardUserDefaults().objectForKey("UserIsAdmin") as Bool! {
+                    
+                    if let userID = NSUserDefaults.standardUserDefaults().objectForKey("UserID") as Int! {
+                        
+                        println("ID: \(userID)")
+                        
+                    }
+                    
+                    if isadmin {
+                        
+                         println("IS admin")
+                        self.navigationController?.pushViewController(testView, animated: true)
+                        
+                    } else {
+                        
+                        println("Not an admin")
+                    }
+                }
                 
             } else {
                 

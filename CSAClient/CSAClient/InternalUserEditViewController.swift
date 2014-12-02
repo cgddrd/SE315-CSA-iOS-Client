@@ -140,8 +140,6 @@ class InternalUserEditViewController: UITableViewController {
                     dispatch_async(dispatch_get_main_queue()) { ()
                         
                         // CG - Pop to root view controller once user confirms alert.
-                        //  self.dismissViewControllerAnimated(true, completion: {})
-                        
                         self.navigationController?.popToRootViewControllerAnimated(true)
                         
                         

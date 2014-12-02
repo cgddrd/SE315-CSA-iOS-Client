@@ -65,6 +65,41 @@ class User {
         }
         return users
     }
+    
+    class func singleUser(result: NSDictionary?) -> User? {
+        
+        // Create an empty array of Albums to append to from this list
+        var newUser: User?
+        
+        // Store the results in our table data array
+        if result != nil {
+            
+            let id = result!["id"] as? Int ?? -1
+            
+            let firstName = result!["firstname"] as? String ?? "N/A"
+            
+            let lastName = result!["surname"] as? String ?? "N/A"
+            
+            let jobs = result!["jobs"] as? Bool ?? false
+            
+            let email = result!["email"] as? String ?? "N/A"
+            
+            let gradYear = result!["grad_year"] as? Int ?? -1
+            
+            let phone = result!["phone"] as? String ?? "N/A"
+            
+            let login = result!["login"] as? String ?? "N/A"
+            
+            newUser = User(id: id, firstName: firstName, lastName: lastName, emailAddress: email, jobs: jobs, phone: phone, gradYear: gradYear, login: login)
+            
+            
+        }
+        
+        
+        // CG - Return optional value with either a new User object, or 'nil'.
+        return newUser?
+        
+    }
 }
 
 

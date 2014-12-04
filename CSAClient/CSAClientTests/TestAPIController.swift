@@ -192,8 +192,6 @@ class TestAPIController: XCTestCase {
             
             XCTAssertTrue(success, "Authentication should have been granted, and new user created successfully.")
             
-            // println(result)
-            
             XCTAssertEqual(result["firstname"] as String, "Testfirstname\(randomNumber)", "Firstnames should match")
             XCTAssertEqual(result["surname"] as String, "Testsurname\(randomNumber)", "Surnames should match")
             XCTAssertEqual(result["email"] as String, "test\(randomNumber)@aber.ac.uk", "Emails should match")
@@ -295,8 +293,6 @@ class TestAPIController: XCTestCase {
             success, result in
             
             XCTAssertTrue(success, "Authentication should have been granted, and new user created successfully.")
-            
-            println(result)
             
             XCTAssertEqual(result["firstname"] as String, "Testfirstname\(randomNumber)", "Firstnames should match")
             XCTAssertEqual(result["surname"] as String, "Testsurname\(randomNumber)", "Surnames should match")
@@ -633,6 +629,58 @@ class TestAPIController: XCTestCase {
             XCTAssertNil(error, "Error")
         })
 
+        
+    }
+    
+    func testCreateAndDeleteUserNoAccess() {
+        
+        self.api?.credentials = self.api?.generateHTTPAuthString("clg11", password: "test123")
+        
+        var randomNumber = arc4random()
+        
+        var parameters = [
+            "user": [
+                "surname": "TestSurname\(randomNumber)",
+                "firstname": "TestFirstname\(randomNumber)",
+                "phone": "00000 000000",
+                "grad_year": "2012",
+                "jobs": "true",
+                "email": "test\(randomNumber)@aber.ac.uk",
+                "user_detail_attributes": [
+                    "password": "testpassword",
+                    "passwordconfirmation": "testpassword",
+                    "login": "testlogin\(randomNumber)"
+                ]
+            ]
+        ]
+        
+        let readyExpectation = expectationWithDescription("ready")
+        
+        api?.postNewUser(urlParams: parameters, completionHandler: {
+            
+            success, result in
+
+            XCTAssertFalse(success, "Authentication should not have been granted, and error message returned.")
+            
+            if (result["errors"] != nil) {
+                
+                XCTAssertEqual(result["errors"]![0] as String, "You must be admin to do that", "Error message informing user as a non-admin they cannot perform action should have been displayed.")
+                
+            } else {
+                
+                XCTFail("Result should not have been 'nil'")
+            }
+            
+            XCTAssertNil(result["id"], "No user ID should have been returned as access should be denied.")
+        
+            readyExpectation.fulfill()
+        })
+        
+        // Loop until the expectation is fulfilled
+        waitForExpectationsWithTimeout(5, { error in
+            XCTAssertNil(error, "Error")
+        })
+        
         
     }
 

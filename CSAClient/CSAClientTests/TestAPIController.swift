@@ -11,7 +11,7 @@ import XCTest
 
 class TestAPIController: XCTestCase {
     
-    var api: APIController?
+    var api : APIController?
     
     override func setUp() {
         super.setUp()
@@ -23,6 +23,9 @@ class TestAPIController: XCTestCase {
     }
     
     func testCorrectLoginCheck () {
+        
+        let readyExpectation = expectationWithDescription("ready")
+        
         api?.checkLogin("clg11", password: "test123", completionHandler: {
             
             success, result in
@@ -30,29 +33,47 @@ class TestAPIController: XCTestCase {
             XCTAssertTrue(success, "User should have been accepted")
             XCTAssertEqual(result!["logged_in"] as Bool, true, "User should be logged in.")
             
+            readyExpectation.fulfill()
+            
+        })
+        
+        waitForExpectationsWithTimeout(5, { error in
+            XCTAssertNil(error, "Error")
         })
     }
     
-    func testInCorrectLoginCheck () {
+   func testInCorrectLoginCheck () {
+    
+        let readyExpectation = expectationWithDescription("ready")
+    
         api?.checkLogin("fakeuser", password: "blahblah", completionHandler: {
             
-            success, result in
+            success1, result1 in
             
-            XCTAssertFalse(success, "User should have been rejected.")
+            XCTAssertFalse(success1, "User should have been rejected.")
             
-            if (result != nil && result!["errors"] != nil) {
+            if (result1 != nil && result1!["errors"] != nil) {
                 
-                XCTAssertEqual(result!["errors"]![0] as String, "Incorrect username or password, please try again.", "User should be logged in.")
+                XCTAssertEqual(result1!["errors"]![0] as String, "Incorrect username or password, please try again.", "User should be logged in.")
                 
             } else {
                 
                 XCTFail("Result should not have been 'nil'")
             }
             
+            readyExpectation.fulfill()
+            
+        })
+    
+        waitForExpectationsWithTimeout(5, { error in
+            XCTAssertNil(error, "Error")
         })
     }
     
     func testCorrectAdminUser () {
+        
+        let readyExpectation = expectationWithDescription("ready")
+        
         api?.checkLogin("admin", password: "taliesin", completionHandler: {
             
             success, result in
@@ -61,10 +82,19 @@ class TestAPIController: XCTestCase {
             
             XCTAssertEqual(result!["is_admin"] as Bool, true, "User should be an admin.")
             
+            readyExpectation.fulfill()
+            
+        })
+        
+        waitForExpectationsWithTimeout(5, { error in
+            XCTAssertNil(error, "Error")
         })
     }
     
     func testInCorrectAdminUser () {
+        
+        let readyExpectation = expectationWithDescription("ready")
+        
         api?.checkLogin("clg11", password: "test123", completionHandler: {
             
             success, result in
@@ -73,20 +103,18 @@ class TestAPIController: XCTestCase {
             
             XCTAssertEqual(result!["is_admin"] as Bool, false, "User should not be an admin.")
             
+            readyExpectation.fulfill()
+            
+        })
+        
+        waitForExpectationsWithTimeout(5, { error in
+            XCTAssertNil(error, "Error")
         })
     }
     
-    
- /*   func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            
-         //   self.testCorrectAdminUser()
-            
-        }
-    } */
-    
     func testGetUsers() {
+        
+        let readyExpectation = expectationWithDescription("ready")
         
         self.api?.credentials = self.api?.generateHTTPAuthString("admin", password: "taliesin")
         
@@ -100,12 +128,19 @@ class TestAPIController: XCTestCase {
             
             XCTAssertNotNil(resultArray, "Should have an array returned.")
             
+            readyExpectation.fulfill()
             
+        })
+        
+        waitForExpectationsWithTimeout(5, { error in
+            XCTAssertNil(error, "Error")
         })
         
     }
     
     func testGetUsersNoAccess() {
+        
+        let readyExpectation = expectationWithDescription("ready")
         
         self.api?.credentials = self.api?.generateHTTPAuthString("clg11", password: "test123")
         
@@ -113,17 +148,23 @@ class TestAPIController: XCTestCase {
             
             success, result in
             
-            //println(result)
-            
             XCTAssertFalse(success, "Authentication should not have been granted, and error message returned.")
             
             XCTAssertNil(result, "Result should be 'nil' due to HTTP 401 authentication error.")
             
+            readyExpectation.fulfill()
+            
+        })
+        
+        waitForExpectationsWithTimeout(5, { error in
+            XCTAssertNil(error, "Error")
         })
         
     }
     
     func testCreateNewUser() {
+        
+        let readyExpectation = expectationWithDescription("ready")
         
         self.api?.credentials = self.api?.generateHTTPAuthString("admin", password: "taliesin")
         
@@ -163,12 +204,19 @@ class TestAPIController: XCTestCase {
             
             XCTAssertNil(result["password"] , "No password should be returned from the server.")
             
+            readyExpectation.fulfill()
             
+        })
+        
+        waitForExpectationsWithTimeout(5, { error in
+            XCTAssertNil(error, "Error")
         })
         
     }
     
     func testCreateNewUserNoAccess() {
+        
+        let readyExpectation = expectationWithDescription("ready")
         
         self.api?.credentials = self.api?.generateHTTPAuthString("clg11", password: "test123")
         
@@ -207,12 +255,21 @@ class TestAPIController: XCTestCase {
                 XCTFail("Result should not have been 'nil'")
             }
             
+            readyExpectation.fulfill()
+            
+        })
+        
+        waitForExpectationsWithTimeout(5, { error in
+            XCTAssertNil(error, "Error")
         })
         
     }
     
-    func testCreateDuplicateUserFailure() {
-        
+   func testCreateDuplicateUserFailure() {
+    
+        let readyExpectation1 = expectationWithDescription("ready1")
+        let readyExpectation2 = expectationWithDescription("ready2")
+    
         self.api?.credentials = self.api?.generateHTTPAuthString("admin", password: "taliesin")
         
         var randomNumber = arc4random()
@@ -251,7 +308,7 @@ class TestAPIController: XCTestCase {
             
             XCTAssertNil(result["password"] , "No password should be returned from the server.")
             
-            
+            readyExpectation1.fulfill()
         })
         
         api?.postNewUser(urlParams: parameters, completionHandler: {
@@ -270,11 +327,19 @@ class TestAPIController: XCTestCase {
                 XCTFail("Result should have returned error messages")
             }
             
+            readyExpectation2.fulfill()
+            
         })
-        
+    
+        waitForExpectationsWithTimeout(5, { error in
+            XCTAssertNil(error, "Error")
+        })
+    
     }
     
    func testCreateNewUserGradYearConditionAcceptableValue() {
+    
+        let readyExpectation = expectationWithDescription("ready")
     
         self.api?.credentials = self.api?.generateHTTPAuthString("admin", password: "taliesin")
         
@@ -306,11 +371,19 @@ class TestAPIController: XCTestCase {
             
             XCTAssertEqual(result["grad_year"] as Int, acceptableGradYear, "Graduation years should match")
             
+            readyExpectation.fulfill()
+            
         })
-        
+    
+        waitForExpectationsWithTimeout(5, { error in
+            XCTAssertNil(error, "Error")
+        })
+    
     }
     
     func testCreateNewUserGradYearConditionBelowMinValue() {
+        
+        let readyExpectation = expectationWithDescription("ready")
         
         self.api?.credentials = self.api?.generateHTTPAuthString("admin", password: "taliesin")
         
@@ -349,12 +422,19 @@ class TestAPIController: XCTestCase {
                 XCTFail("Result should have returned error messages")
             }
             
+            readyExpectation.fulfill()
             
+        })
+        
+        waitForExpectationsWithTimeout(5, { error in
+            XCTAssertNil(error, "Error")
         })
         
     }
     
     func testCreateNewUserGradYearConditionAboveMaxValue() {
+        
+        let readyExpectation = expectationWithDescription("ready")
         
         self.api?.credentials = self.api?.generateHTTPAuthString("admin", password: "taliesin")
         
@@ -391,14 +471,18 @@ class TestAPIController: XCTestCase {
             
             if (result["errors"] != nil) {
                 
-                XCTAssertEqual(result["errors"]![0] as String, "Grad year must be less than or equal to \(currentYear)")
+                XCTAssertEqual(result["errors"]![0] as String, "Grad year must be less than or equal to \(currentYear)", "Error message should match.")
                 
             } else {
                 
                 XCTFail("Result should have returned error messages")
             }
             
-            
+            readyExpectation.fulfill()
+        })
+        
+        waitForExpectationsWithTimeout(5, { error in
+            XCTAssertNil(error, "Error")
         })
         
     }
@@ -425,11 +509,13 @@ class TestAPIController: XCTestCase {
             ]
         ]
         
+        let readyExpectation1 = expectationWithDescription("ready1")
+        let readyExpectation2 = expectationWithDescription("ready2")
+        let readyExpectation3 = expectationWithDescription("ready3")
+        
         api?.postNewUser(urlParams: parameters, completionHandler: {
             
             success, result in
-            
-            println(success)
             
             XCTAssertTrue(success, "Authentication should have been granted, and new user created successfully.")
             
@@ -451,13 +537,9 @@ class TestAPIController: XCTestCase {
                     
                     updateSuccess, updateResult in
                     
-                    println(updateSuccess)
-                    
                     XCTAssertTrue(updateSuccess, "Authentication should have been granted, and user \(newUserID) should have been updated successfully.")
                     
                     XCTAssertNil(updateResult , "No data should have been returned from the server (HTTP 204 - No Content reponse expected)")
-                    
-                    println("NEW USER ID: \(newUserID)")
                     
                     self.api?.getUser(newUserID, completionHandler: {
                         
@@ -465,20 +547,92 @@ class TestAPIController: XCTestCase {
                         
                         XCTAssertTrue(getUserSuccess, "Authentication should have been granted, and user \(newUserID) should have been retrieved successfully.")
                         
-                        println(getUserResult)
+                        XCTAssertEqual(getUserResult!["firstname"] as String, "\(newUserName)-update", "Updated firstnames should match")
+                        
+                        readyExpectation1.fulfill()
                         
                     })
 
+                    readyExpectation2.fulfill()
                     
                 })
-                
                 
             } else {
                 
                 XCTFail("Could not retrieve ID for newly-created user.")
             }
+            
+            readyExpectation3.fulfill()
         })
         
+        // Loop until the expectation is fulfilled
+        waitForExpectationsWithTimeout(5, { error in
+            XCTAssertNil(error, "Error")
+        })
+        
+    }
+    
+    func testCreateAndDeleteUser() {
+        
+        self.api?.credentials = self.api?.generateHTTPAuthString("admin", password: "taliesin")
+        
+        var randomNumber = arc4random()
+        
+        var parameters = [
+            "user": [
+                "surname": "TestSurname\(randomNumber)",
+                "firstname": "TestFirstname\(randomNumber)",
+                "phone": "00000 000000",
+                "grad_year": "2012",
+                "jobs": "true",
+                "email": "test\(randomNumber)@aber.ac.uk",
+                "user_detail_attributes": [
+                    "password": "testpassword",
+                    "passwordconfirmation": "testpassword",
+                    "login": "testlogin\(randomNumber)"
+                ]
+            ]
+        ]
+        
+        let readyExpectation1 = expectationWithDescription("ready1")
+        let readyExpectation2 = expectationWithDescription("ready2")
+        
+        api?.postNewUser(urlParams: parameters, completionHandler: {
+            
+            success, result in
+            
+            XCTAssertTrue(success, "Authentication should have been granted, and new user created successfully.")
+            
+            XCTAssertEqual(result["firstname"] as String, "Testfirstname\(randomNumber)", "Firstnames should match")
+            
+            XCTAssertNotNil(result["id"], "New user ID should have been returned.")
+            
+            if let newUserID = result["id"] as? Int {
+                
+                self.api?.deleteUser(newUserID, completionHandler: {
+                    
+                    deleteSuccess, deleteResult in
+                    
+                    XCTAssertTrue(deleteSuccess, "Authentication should have been granted, and user \(newUserID) should have been deleted.")
+                    
+                    readyExpectation1.fulfill()
+                    
+                })
+
+                
+            } else {
+                
+                XCTFail("Could not retrieve ID for newly-created user.")
+            }
+            
+            readyExpectation2.fulfill()
+        })
+        
+        // Loop until the expectation is fulfilled
+        waitForExpectationsWithTimeout(5, { error in
+            XCTAssertNil(error, "Error")
+        })
+
         
     }
 

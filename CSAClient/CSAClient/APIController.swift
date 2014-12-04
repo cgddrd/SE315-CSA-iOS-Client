@@ -144,9 +144,6 @@ class APIController {
                     
                     completionHandler(true, object)
                     
-                } else {
-                    
-                    println("ohno")
                 }
                 
                 
@@ -156,9 +153,6 @@ class APIController {
                     
                     completionHandler(false, object)
                     
-                } else {
-                    
-                    println("ohno")
                 }
             }
             

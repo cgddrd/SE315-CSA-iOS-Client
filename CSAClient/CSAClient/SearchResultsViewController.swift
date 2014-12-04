@@ -64,7 +64,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
         let user = self.users[indexPath.row];
         
-        cell.textLabel.text = "\(user.firstName) \(user.lastName)"
+        cell.textLabel?.text = "\(user.firstName) \(user.lastName)"
         
         cell.detailTextLabel?.text = user.emailAddress
         

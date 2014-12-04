@@ -20,8 +20,18 @@ class InternalUserEditViewController: UITableViewController {
     @IBOutlet var textEmailAddress: UITextField!
     @IBOutlet var textSurname: UITextField!
     @IBOutlet var textFirstname: UITextField!
+    @IBOutlet weak var deleteButton: UIButton!
+    
+    @IBOutlet weak var deleteButtonCell: UITableViewCell!
     
     override func viewWillAppear(animated: Bool) {
+        
+        // CG - If the current user is not an admin, hide the delete button to prevent them from deleting themselves.
+        if let isadmin = NSUserDefaults.standardUserDefaults().objectForKey("UserIsAdmin") as Bool! {
+        
+            self.deleteButtonCell.hidden = !isadmin
+            
+        }
         
         self.api?.getUser(self.currentUserID!, completionHandler: { success, result in
             

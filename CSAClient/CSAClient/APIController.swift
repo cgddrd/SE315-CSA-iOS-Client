@@ -9,27 +9,13 @@
 import Foundation
 import Alamofire
 
-/*protocol APIControllerProtocol {
-func didReceiveAPIResults(results: Array<NSDictionary>)
-} */
-
 class APIController {
-    
-    // CG - Changed to no longer be an Optional variable. APIController MUST ALWAYS have a delegate.
-    //var delegate: APIControllerProtocol?
-    
-    //var delegate: APIControllerProtocol
     
     var apiManager = Alamofire.Manager.sharedInstance
     
     var credentials : String?
     
-    // CG - Updated to pass delegate into APIController constructor.
-    // init(newDelegate: APIControllerProtocol) {
-    
     init(credentials : String?) {
-        
-        // self.delegate = newDelegate
         
         self.apiManager.session.configuration.HTTPAdditionalHeaders = [
             "Accept": "application/json"

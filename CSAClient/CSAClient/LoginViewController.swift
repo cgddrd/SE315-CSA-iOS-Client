@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate/*, APIControllerProtocol*/ {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     var api : APIController?
     

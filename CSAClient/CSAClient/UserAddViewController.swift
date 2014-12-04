@@ -27,17 +27,6 @@ class UserAddViewController: UIViewController {
         
         var view = self.internalViewController
         
-        /*for subview in view?.view.subviews as [UIView] {
-            if let currentTextField = subview as? UITextField {
-                
-                if currentTextField.text.isEmpty {
-                    
-                    emptyField = true
-                    
-                }
-            }
-        }*/
-        
         if view!.textFirstname.text.isEmpty || view!.textSurname.text.isEmpty || view!.textTelephoneNumber.text.isEmpty || view!.textGradYear.text.isEmpty || view!.textEmailAddress.text.isEmpty || view!.textGradYear.text.isEmpty || view!.textPassword.text.isEmpty || view!.textPasswordConfirmation.text.isEmpty || view!.textUsername.text.isEmpty {
             
             // Create the alert controller
@@ -51,7 +40,22 @@ class UserAddViewController: UIViewController {
             
             // CG - Display the alert view.
             self.presentViewController(alertController, animated: true, completion: nil)
+         
+        // CG - Check password matches password confirmation.
+        } else if (view?.textPassword.text != view?.textPasswordConfirmation.text) {
             
+            // Create the alert controller
+            var alertController = UIAlertController(title: "Error", message: "Password confirmation does not match password.", preferredStyle: .Alert)
+            
+            // Create the actions
+            var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            
+            // Add the actions
+            alertController.addAction(okAction)
+            
+            // CG - Display the alert view.
+            self.presentViewController(alertController, animated: true, completion: nil)
+        
         } else {
             
             let parameters = [

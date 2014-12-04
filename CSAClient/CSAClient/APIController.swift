@@ -30,11 +30,18 @@ class APIController {
         
     }
     
-    func checkLogin(username : String, password: String, completionHandler: (Bool, NSDictionary?) -> ()) -> ()  {
+    func generateHTTPAuthString(username: String, password: String) -> String {
         
         let loginString = NSString(format: "%@:%@", username, password)
         let loginData: NSData = loginString.dataUsingEncoding(NSUTF8StringEncoding)!
-        let base64LoginString = loginData.base64EncodedStringWithOptions(nil)
+        
+        return loginData.base64EncodedStringWithOptions(nil)
+        
+    }
+    
+    func checkLogin(username : String, password: String, completionHandler: (Bool, NSDictionary?) -> ()) -> ()  {
+        
+        let base64LoginString = self.generateHTTPAuthString(username, password: password)
         
         // We know HTTPAdditionalHeaders has a value (see above), so we can implicitly unwrap the Optional value.
         apiManager.session.configuration.HTTPAdditionalHeaders!["Authorization"] = "Basic \(base64LoginString)"
@@ -137,6 +144,9 @@ class APIController {
                     
                     completionHandler(true, object)
                     
+                } else {
+                    
+                    println("ohno")
                 }
                 
                 
@@ -146,6 +156,9 @@ class APIController {
                     
                     completionHandler(false, object)
                     
+                } else {
+                    
+                    println("ohno")
                 }
             }
             

@@ -11,7 +11,6 @@
 		999C331F1A286F2900AF2F82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C331E1A286F2900AF2F82 /* AppDelegate.swift */; };
 		999C33261A286F2900AF2F82 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 999C33251A286F2900AF2F82 /* Images.xcassets */; };
 		999C33291A286F2900AF2F82 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 999C33271A286F2900AF2F82 /* LaunchScreen.xib */; };
-		999C33351A286F2900AF2F82 /* CSAClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33341A286F2900AF2F82 /* CSAClientTests.swift */; };
 		999C33411A286F9A00AF2F82 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33401A286F9A00AF2F82 /* SearchResultsViewController.swift */; };
 		999C33451A28714C00AF2F82 /* Blank52.png in Resources */ = {isa = PBXBuildFile; fileRef = 999C33441A28714C00AF2F82 /* Blank52.png */; };
 		999C33471A2871C200AF2F82 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33461A2871C200AF2F82 /* User.swift */; };
@@ -95,7 +94,6 @@
 		999C33281A286F2900AF2F82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		999C332E1A286F2900AF2F82 /* CSAClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CSAClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		999C33331A286F2900AF2F82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		999C33341A286F2900AF2F82 /* CSAClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSAClientTests.swift; sourceTree = "<group>"; };
 		999C33401A286F9A00AF2F82 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		999C33441A28714C00AF2F82 /* Blank52.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blank52.png; sourceTree = "<group>"; };
 		999C33461A2871C200AF2F82 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -185,7 +183,6 @@
 		999C33311A286F2900AF2F82 /* CSAClientTests */ = {
 			isa = PBXGroup;
 			children = (
-				999C33341A286F2900AF2F82 /* CSAClientTests.swift */,
 				99B13DC71A30780A00C2FFCC /* TestAPIController.swift */,
 				999C33321A286F2900AF2F82 /* Supporting Files */,
 			);
@@ -359,7 +356,6 @@
 				99B13DBC1A3075B900C2FFCC /* AppDelegate.swift in Sources */,
 				99B13DC41A3075D400C2FFCC /* TestViewController.swift in Sources */,
 				99B13DBF1A3075C600C2FFCC /* User.swift in Sources */,
-				999C33351A286F2900AF2F82 /* CSAClientTests.swift in Sources */,
 				99B13DC61A3075DE00C2FFCC /* UserAddViewController.swift in Sources */,
 				99B13DC11A3075CA00C2FFCC /* InternalUserDetailsController.swift in Sources */,
 				99B13DC81A30780A00C2FFCC /* TestAPIController.swift in Sources */,

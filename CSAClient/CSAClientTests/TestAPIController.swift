@@ -42,10 +42,10 @@ class TestAPIController: XCTestCase {
         })
     }
     
-   func testInCorrectLoginCheck () {
-    
+    func testInCorrectLoginCheck () {
+        
         let readyExpectation = expectationWithDescription("ready")
-    
+        
         api?.checkLogin("fakeuser", password: "blahblah", completionHandler: {
             
             success1, result1 in
@@ -64,7 +64,7 @@ class TestAPIController: XCTestCase {
             readyExpectation.fulfill()
             
         })
-    
+        
         waitForExpectationsWithTimeout(5, { error in
             XCTAssertNil(error, "Error")
         })
@@ -263,11 +263,11 @@ class TestAPIController: XCTestCase {
         
     }
     
-   func testCreateDuplicateUserFailure() {
-    
+    func testCreateDuplicateUserFailure() {
+        
         let readyExpectation1 = expectationWithDescription("ready1")
         let readyExpectation2 = expectationWithDescription("ready2")
-    
+        
         self.api?.credentials = self.api?.generateHTTPAuthString("admin", password: "taliesin")
         
         var randomNumber = arc4random()
@@ -326,17 +326,17 @@ class TestAPIController: XCTestCase {
             readyExpectation2.fulfill()
             
         })
-    
+        
         waitForExpectationsWithTimeout(5, { error in
             XCTAssertNil(error, "Error")
         })
-    
+        
     }
     
-   func testCreateNewUserGradYearConditionAcceptableValue() {
-    
+    func testCreateNewUserGradYearConditionAcceptableValue() {
+        
         let readyExpectation = expectationWithDescription("ready")
-    
+        
         self.api?.credentials = self.api?.generateHTTPAuthString("admin", password: "taliesin")
         
         var randomNumber = arc4random()
@@ -370,11 +370,11 @@ class TestAPIController: XCTestCase {
             readyExpectation.fulfill()
             
         })
-    
+        
         waitForExpectationsWithTimeout(5, { error in
             XCTAssertNil(error, "Error")
         })
-    
+        
     }
     
     func testCreateNewUserGradYearConditionBelowMinValue() {
@@ -488,7 +488,7 @@ class TestAPIController: XCTestCase {
         self.api?.credentials = self.api?.generateHTTPAuthString("admin", password: "taliesin")
         
         var randomNumber = arc4random()
-    
+        
         var parameters = [
             "user": [
                 "surname": "TestSurname\(randomNumber)",
@@ -548,7 +548,7 @@ class TestAPIController: XCTestCase {
                         readyExpectation1.fulfill()
                         
                     })
-
+                    
                     readyExpectation2.fulfill()
                     
                 })
@@ -614,7 +614,7 @@ class TestAPIController: XCTestCase {
                     readyExpectation1.fulfill()
                     
                 })
-
+                
                 
             } else {
                 
@@ -628,60 +628,65 @@ class TestAPIController: XCTestCase {
         waitForExpectationsWithTimeout(5, { error in
             XCTAssertNil(error, "Error")
         })
-
+        
         
     }
     
     func testCreateAndDeleteUserNoAccess() {
         
-        self.api?.credentials = self.api?.generateHTTPAuthString("clg11", password: "test123")
-        
-        var randomNumber = arc4random()
-        
-        var parameters = [
-            "user": [
-                "surname": "TestSurname\(randomNumber)",
-                "firstname": "TestFirstname\(randomNumber)",
-                "phone": "00000 000000",
-                "grad_year": "2012",
-                "jobs": "true",
-                "email": "test\(randomNumber)@aber.ac.uk",
-                "user_detail_attributes": [
-                    "password": "testpassword",
-                    "passwordconfirmation": "testpassword",
-                    "login": "testlogin\(randomNumber)"
+        self.measureBlock() {
+            
+            self.api?.credentials = self.api?.generateHTTPAuthString("clg11", password: "test123")
+            
+            var randomNumber = arc4random()
+            
+            var parameters = [
+                "user": [
+                    "surname": "TestSurname\(randomNumber)",
+                    "firstname": "TestFirstname\(randomNumber)",
+                    "phone": "00000 000000",
+                    "grad_year": "2012",
+                    "jobs": "true",
+                    "email": "test\(randomNumber)@aber.ac.uk",
+                    "user_detail_attributes": [
+                        "password": "testpassword",
+                        "passwordconfirmation": "testpassword",
+                        "login": "testlogin\(randomNumber)"
+                    ]
                 ]
             ]
-        ]
-        
-        let readyExpectation = expectationWithDescription("ready")
-        
-        api?.postNewUser(urlParams: parameters, completionHandler: {
             
-            success, result in
-
-            XCTAssertFalse(success, "Authentication should not have been granted, and error message returned.")
+            let readyExpectation = self.expectationWithDescription("ready")
             
-            if (result["errors"] != nil) {
+            self.api?.postNewUser(urlParams: parameters, completionHandler: {
                 
-                XCTAssertEqual(result["errors"]![0] as String, "You must be admin to do that", "Error message informing user as a non-admin they cannot perform action should have been displayed.")
+                success, result in
                 
-            } else {
+                XCTAssertFalse(success, "Authentication should not have been granted, and error message returned.")
                 
-                XCTFail("Result should not have been 'nil'")
-            }
+                if (result["errors"] != nil) {
+                    
+                    XCTAssertEqual(result["errors"]![0] as String, "You must be admin to do that", "Error message informing user as a non-admin they cannot perform action should have been displayed.")
+                    
+                } else {
+                    
+                    XCTFail("Result should not have been 'nil'")
+                }
+                
+                XCTAssertNil(result["id"], "No user ID should have been returned as access should be denied.")
+                
+                readyExpectation.fulfill()
+            })
             
-            XCTAssertNil(result["id"], "No user ID should have been returned as access should be denied.")
-        
-            readyExpectation.fulfill()
-        })
-        
-        // Loop until the expectation is fulfilled
-        waitForExpectationsWithTimeout(5, { error in
-            XCTAssertNil(error, "Error")
-        })
+            // Loop until the expectation is fulfilled
+            self.waitForExpectationsWithTimeout(5, { error in
+                XCTAssertNil(error, "Error")
+            })
+            
+            
+        }
         
         
     }
-
+    
 }

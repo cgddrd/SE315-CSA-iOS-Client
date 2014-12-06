@@ -8,14 +8,12 @@
 
 import UIKit
 
-class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate /*,APIControllerProtocol*/ {
+class UserListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var api : APIController?
     
-    var imageCache = [String : UIImage]()
-    
     // CG - Identifier for the reusable Prototype Cell created in the Storyboard.
-    let kCellIdentifier: String = "SearchResultCell"
+    let prototypeCellIdentifier: String = "UserResultCell"
     
     @IBOutlet weak var appsTableView: UITableView!
     
@@ -60,7 +58,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     // CG - Render each of the UITableView cells.
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as UITableViewCell
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(prototypeCellIdentifier) as UITableViewCell
     
         let user = self.users[indexPath.row];
         
@@ -100,7 +98,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                         dispatch_async(dispatch_get_main_queue(), {
                             
                             // Call STATIC method within 'Album' class to convert JSON into array of 'Album' objects.
-                            self.users = User.usersWithJSON(result!)
+                            self.users = User.getAllUsersFromJSON(result!)
                             
                             self.appsTableView!.reloadData()
                             

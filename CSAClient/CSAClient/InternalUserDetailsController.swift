@@ -32,7 +32,7 @@ class InternalUserDetailsController: UITableViewController {
             
             if success {
                 
-                self.user = User.singleUser(result)
+                self.user = User.getSingleUserFromJSON(result)
                 
                 self.nameCell.detailTextLabel?.text = "\(self.user!.firstName) \(self.user!.lastName)"
                 

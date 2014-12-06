@@ -32,7 +32,7 @@ class User {
         self.login = login
     }
     
-    class func usersWithJSON(allResults: Array<NSDictionary>) -> [User] {
+    class func getAllUsersFromJSON(allResults: Array<NSDictionary>) -> [User] {
         
         // Create an empty array of Albums to append to from this list
         var users = [User]()
@@ -66,7 +66,7 @@ class User {
         return users
     }
     
-    class func singleUser(result: NSDictionary?) -> User? {
+    class func getSingleUserFromJSON(result: NSDictionary?) -> User? {
         
         // Create an empty array of Albums to append to from this list
         var newUser: User?

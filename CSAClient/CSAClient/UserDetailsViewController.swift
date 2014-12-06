@@ -11,13 +11,7 @@ import UIKit
 class UserDetailsViewController: UIViewController {
     
     var api : APIController?
-    var internalViewController : InternalUserDetailsController?
     var currentUserID: Int?
-
-
-//    required init(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//    }
 
     override func viewDidLoad() {
         
@@ -30,13 +24,11 @@ class UserDetailsViewController: UIViewController {
         
         if (segue.identifier == "embedUserDetailsSegue") {
             
-            self.internalViewController = segue.destinationViewController as? InternalUserDetailsController
+            var internalUserDetailsController = segue.destinationViewController as? InternalUserDetailsController
             
-            self.internalViewController?.api = self.api
+            internalUserDetailsController?.api = self.api
             
-            println(self.currentUserID)
-            
-            self.internalViewController?.currentUserID = self.currentUserID
+            internalUserDetailsController?.currentUserID = self.currentUserID
             
         } else if (segue.identifier == "editUserSegue") {
             

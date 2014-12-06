@@ -37,7 +37,7 @@ class InternalUserEditViewController: UITableViewController {
             
             if success {
                 
-                self.user = User.singleUser(result)
+                self.user = User.getSingleUserFromJSON(result)
                 
                 self.title = "\(self.user!.firstName) \(self.user!.lastName)"
                 
@@ -81,7 +81,7 @@ class InternalUserEditViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func test() {
+    func deleteCurrentUser() {
         
         // Notice here how we are not having to pass any URL parameters in, default parameter in the function declaration deals with this for us.
         self.api?.deleteUser(self.user!.id, completionHandler: {
@@ -136,7 +136,7 @@ class InternalUserEditViewController: UITableViewController {
 
         refreshAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(refreshAlert) in
             
-            self.test()
+            self.deleteCurrentUser()
             
         }))
         

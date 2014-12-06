@@ -8,7 +8,7 @@
         <!--Users-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController storyboardIdentifier="SearchResultsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" customClass="SearchResultsViewController" customModule="Aber_CSA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" customClass="UserListViewController" customModule="Aber_CSA" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchResultCell" textLabel="M57-3L-Opx" detailTextLabel="Zb4-oM-Mr8" style="IBUITableViewCellStyleSubtitle" id="I8c-FD-vPg">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserResultCell" textLabel="M57-3L-Opx" detailTextLabel="Zb4-oM-Mr8" style="IBUITableViewCellStyleSubtitle" id="I8c-FD-vPg">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I8c-FD-vPg" id="qzc-lg-hUj">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -86,6 +86,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QZD-FR-SbI">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <connections>
+                                    <segue destination="SYw-nd-cCx" kind="embed" identifier="embedSegue" id="9AJ-ZX-dXz"/>
+                                </connections>
+                            </containerView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nHD-rk-x6Z">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <constraints>
@@ -106,12 +112,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QZD-FR-SbI">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <connections>
-                                    <segue destination="SYw-nd-cCx" kind="embed" identifier="embedSegue" id="9AJ-ZX-dXz"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -125,9 +125,6 @@
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="testView" destination="QZD-FR-SbI" id="6Uw-MU-PzT"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aDT-5O-Rr9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -266,10 +263,10 @@
             </objects>
             <point key="canvasLocation" x="885" y="596"/>
         </scene>
-        <!--Internal View Controller-->
+        <!--Internal User Add View Controller-->
         <scene sceneID="OU4-LN-VSo">
             <objects>
-                <tableViewController storyboardIdentifier="InternalViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SYw-nd-cCx" customClass="InternalViewController" customModule="Aber_CSA" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="InternalUserAddViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SYw-nd-cCx" customClass="InternalUserAddViewController" customModule="Aber_CSA" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="cXp-VE-eEd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

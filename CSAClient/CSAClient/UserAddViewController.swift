@@ -12,9 +12,7 @@ class UserAddViewController: UIViewController {
     
     var api : APIController?
     
-    var internalViewController : InternalViewController?
-    
-    @IBOutlet weak var testView: UIView!
+    var internalViewController : InternalUserAddViewController?
     
     @IBAction func pressedCancelButton(sender: AnyObject) {
         
@@ -117,7 +115,7 @@ class UserAddViewController: UIViewController {
         
         if (segue.identifier == "embedSegue") {
             
-            self.internalViewController = segue.destinationViewController as? InternalViewController
+            self.internalViewController = segue.destinationViewController as? InternalUserAddViewController
             
         }
         

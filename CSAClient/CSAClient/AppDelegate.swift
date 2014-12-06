@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 if isadmin {
                 
-                    var initialViewController = storyboard.instantiateViewControllerWithIdentifier("SearchResultsViewController") as SearchResultsViewController
+                    var initialViewController = storyboard.instantiateViewControllerWithIdentifier("UserListViewController") as UserListViewController
                     
                     initialViewController.api = api
                     

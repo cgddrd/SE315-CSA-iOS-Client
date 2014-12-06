@@ -40,14 +40,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
             success, result in
             
-            let alertTitle = success ? "Edit User" : "Error"
+            let alertTitle = "Login Error"
             var alertMessage: String
             
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             
             if success {
             
-                let testView = self.storyboard?.instantiateViewControllerWithIdentifier("SearchResultsViewController") as SearchResultsViewController
+                let testView = self.storyboard?.instantiateViewControllerWithIdentifier("UserListViewController") as UserListViewController
                 
                 testView.api = self.api;
                 
@@ -61,15 +61,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 if let isadmin = NSUserDefaults.standardUserDefaults().objectForKey("UserIsAdmin") as Bool! {
                     
-                    if let userID = NSUserDefaults.standardUserDefaults().objectForKey("UserID") as Int! {
-                        
-                        println("ID: \(userID)")
-                        
-                    }
-                    
                     if isadmin {
                         
-                         println("IS admin")
                         self.navigationController?.pushViewController(testView, animated: true)
                         
                     } else {
@@ -80,9 +73,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         
                         displayView.currentUserID = NSUserDefaults.standardUserDefaults().objectForKey("UserID") as Int!
                         
-                        println("Not an admin")
-                        
                         var viewControllers: NSArray = [displayView];
+                        
                         self.navigationController?.setViewControllers(viewControllers, animated: true)
                         
                         self.navigationController?.popToRootViewControllerAnimated(true)

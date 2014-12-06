@@ -1,5 +1,5 @@
 //
-//  InternalViewController.swift
+//  InternalUserAddViewController.swift
 //  CSAClient
 //
 //  Created by Connor Goddard on 30/11/2014.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InternalViewController: UITableViewController {
+class InternalUserAddViewController: UITableViewController {
     
     @IBOutlet var textFirstname: UITextField!
     @IBOutlet var textSurname: UITextField!

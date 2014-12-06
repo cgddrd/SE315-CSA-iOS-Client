@@ -30,6 +30,8 @@ class APIController {
         
     }
     
+
+    
     func generateHTTPAuthString(username: String, password: String) -> String {
         
         let loginString = NSString(format: "%@:%@", username, password)

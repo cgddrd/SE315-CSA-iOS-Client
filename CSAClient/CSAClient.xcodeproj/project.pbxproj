@@ -11,7 +11,7 @@
 		999C331F1A286F2900AF2F82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C331E1A286F2900AF2F82 /* AppDelegate.swift */; };
 		999C33261A286F2900AF2F82 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 999C33251A286F2900AF2F82 /* Images.xcassets */; };
 		999C33291A286F2900AF2F82 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 999C33271A286F2900AF2F82 /* LaunchScreen.xib */; };
-		999C33411A286F9A00AF2F82 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33401A286F9A00AF2F82 /* SearchResultsViewController.swift */; };
+		999C33411A286F9A00AF2F82 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33401A286F9A00AF2F82 /* UserListViewController.swift */; };
 		999C33451A28714C00AF2F82 /* Blank52.png in Resources */ = {isa = PBXBuildFile; fileRef = 999C33441A28714C00AF2F82 /* Blank52.png */; };
 		999C33471A2871C200AF2F82 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33461A2871C200AF2F82 /* User.swift */; };
 		999C33491A28923800AF2F82 /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33481A28923800AF2F82 /* UserDetailsViewController.swift */; };
@@ -19,18 +19,16 @@
 		999C33621A28BB0A00AF2F82 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999C335F1A28BADF00AF2F82 /* Alamofire.framework */; };
 		999C33631A28BB0A00AF2F82 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 999C335F1A28BADF00AF2F82 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		999C33681A28CB3D00AF2F82 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33671A28CB3D00AF2F82 /* APIController.swift */; };
-		999C336A1A29394F00AF2F82 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33691A29394F00AF2F82 /* TestViewController.swift */; };
-		99A0D14A1A2B2A7F0074EABD /* InternalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0D1491A2B2A7F0074EABD /* InternalViewController.swift */; };
+		99A0D14A1A2B2A7F0074EABD /* InternalUserAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0D1491A2B2A7F0074EABD /* InternalUserAddViewController.swift */; };
 		99B13DBB1A30752300C2FFCC /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33481A28923800AF2F82 /* UserDetailsViewController.swift */; };
 		99B13DBC1A3075B900C2FFCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C331E1A286F2900AF2F82 /* AppDelegate.swift */; };
 		99B13DBD1A3075BC00C2FFCC /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33671A28CB3D00AF2F82 /* APIController.swift */; };
-		99B13DBE1A3075C400C2FFCC /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33401A286F9A00AF2F82 /* SearchResultsViewController.swift */; };
+		99B13DBE1A3075C400C2FFCC /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33401A286F9A00AF2F82 /* UserListViewController.swift */; };
 		99B13DBF1A3075C600C2FFCC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33461A2871C200AF2F82 /* User.swift */; };
-		99B13DC01A3075C800C2FFCC /* InternalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0D1491A2B2A7F0074EABD /* InternalViewController.swift */; };
+		99B13DC01A3075C800C2FFCC /* InternalUserAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0D1491A2B2A7F0074EABD /* InternalUserAddViewController.swift */; };
 		99B13DC11A3075CA00C2FFCC /* InternalUserDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3DD941A2BC2400011153D /* InternalUserDetailsController.swift */; };
 		99B13DC21A3075CC00C2FFCC /* InternalUserEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3DD971A2CB0030011153D /* InternalUserEditViewController.swift */; };
 		99B13DC31A3075CE00C2FFCC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3DD9B1A2D25970011153D /* LoginViewController.swift */; };
-		99B13DC41A3075D400C2FFCC /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33691A29394F00AF2F82 /* TestViewController.swift */; };
 		99B13DC51A3075DC00C2FFCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 999C334A1A28A46600AF2F82 /* Main.storyboard */; };
 		99B13DC61A3075DE00C2FFCC /* UserAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996B653F1A29ED9500A556DC /* UserAddViewController.swift */; };
 		99B13DC81A30780A00C2FFCC /* TestAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B13DC71A30780A00C2FFCC /* TestAPIController.swift */; };
@@ -169,15 +167,14 @@
 		999C33281A286F2900AF2F82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		999C332E1A286F2900AF2F82 /* CSAClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CSAClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		999C33331A286F2900AF2F82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		999C33401A286F9A00AF2F82 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		999C33401A286F9A00AF2F82 /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		999C33441A28714C00AF2F82 /* Blank52.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blank52.png; sourceTree = "<group>"; };
 		999C33461A2871C200AF2F82 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		999C33481A28923800AF2F82 /* UserDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
 		999C334A1A28A46600AF2F82 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = CSAClientTests/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		999C33591A28BADE00AF2F82 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		999C33671A28CB3D00AF2F82 /* APIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
-		999C33691A29394F00AF2F82 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		99A0D1491A2B2A7F0074EABD /* InternalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalViewController.swift; sourceTree = "<group>"; };
+		99A0D1491A2B2A7F0074EABD /* InternalUserAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalUserAddViewController.swift; sourceTree = "<group>"; };
 		99B13DC71A30780A00C2FFCC /* TestAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAPIController.swift; sourceTree = "<group>"; };
 		99B3DD941A2BC2400011153D /* InternalUserDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalUserDetailsController.swift; sourceTree = "<group>"; };
 		99B3DD971A2CB0030011153D /* InternalUserEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalUserEditViewController.swift; sourceTree = "<group>"; };
@@ -306,13 +303,12 @@
 				996B653F1A29ED9500A556DC /* UserAddViewController.swift */,
 				999C33671A28CB3D00AF2F82 /* APIController.swift */,
 				999C334A1A28A46600AF2F82 /* Main.storyboard */,
-				999C33691A29394F00AF2F82 /* TestViewController.swift */,
 				999C33441A28714C00AF2F82 /* Blank52.png */,
 				999C331E1A286F2900AF2F82 /* AppDelegate.swift */,
 				999C33481A28923800AF2F82 /* UserDetailsViewController.swift */,
-				999C33401A286F9A00AF2F82 /* SearchResultsViewController.swift */,
+				999C33401A286F9A00AF2F82 /* UserListViewController.swift */,
 				999C33461A2871C200AF2F82 /* User.swift */,
-				99A0D1491A2B2A7F0074EABD /* InternalViewController.swift */,
+				99A0D1491A2B2A7F0074EABD /* InternalUserAddViewController.swift */,
 				99B3DD941A2BC2400011153D /* InternalUserDetailsController.swift */,
 				99B3DD971A2CB0030011153D /* InternalUserEditViewController.swift */,
 				99B3DD9B1A2D25970011153D /* LoginViewController.swift */,
@@ -1789,12 +1785,11 @@
 				996B65401A29ED9500A556DC /* UserAddViewController.swift in Sources */,
 				99B3DD951A2BC2400011153D /* InternalUserDetailsController.swift in Sources */,
 				999C33491A28923800AF2F82 /* UserDetailsViewController.swift in Sources */,
-				999C33411A286F9A00AF2F82 /* SearchResultsViewController.swift in Sources */,
+				999C33411A286F9A00AF2F82 /* UserListViewController.swift in Sources */,
 				99B3DD981A2CB0030011153D /* InternalUserEditViewController.swift in Sources */,
-				99A0D14A1A2B2A7F0074EABD /* InternalViewController.swift in Sources */,
+				99A0D14A1A2B2A7F0074EABD /* InternalUserAddViewController.swift in Sources */,
 				999C331F1A286F2900AF2F82 /* AppDelegate.swift in Sources */,
 				999C33471A2871C200AF2F82 /* User.swift in Sources */,
-				999C336A1A29394F00AF2F82 /* TestViewController.swift in Sources */,
 				999C33681A28CB3D00AF2F82 /* APIController.swift in Sources */,
 				99B3DD9C1A2D25970011153D /* LoginViewController.swift in Sources */,
 			);
@@ -1806,16 +1801,15 @@
 			files = (
 				99B13DBD1A3075BC00C2FFCC /* APIController.swift in Sources */,
 				99B13DBC1A3075B900C2FFCC /* AppDelegate.swift in Sources */,
-				99B13DC41A3075D400C2FFCC /* TestViewController.swift in Sources */,
 				99B13DBF1A3075C600C2FFCC /* User.swift in Sources */,
 				99B13DC61A3075DE00C2FFCC /* UserAddViewController.swift in Sources */,
 				99B13DC11A3075CA00C2FFCC /* InternalUserDetailsController.swift in Sources */,
 				99B13DC81A30780A00C2FFCC /* TestAPIController.swift in Sources */,
 				99B13DBB1A30752300C2FFCC /* UserDetailsViewController.swift in Sources */,
 				99B13DC21A3075CC00C2FFCC /* InternalUserEditViewController.swift in Sources */,
-				99B13DBE1A3075C400C2FFCC /* SearchResultsViewController.swift in Sources */,
+				99B13DBE1A3075C400C2FFCC /* UserListViewController.swift in Sources */,
 				99B13DC31A3075CE00C2FFCC /* LoginViewController.swift in Sources */,
-				99B13DC01A3075C800C2FFCC /* InternalViewController.swift in Sources */,
+				99B13DC01A3075C800C2FFCC /* InternalUserAddViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

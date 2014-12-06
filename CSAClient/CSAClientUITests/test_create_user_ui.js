@@ -6,7 +6,7 @@ function testCreateUserDuplicateUser() {
         var title = alert.name();
         var message = alert.scrollViews()[0].staticTexts()[1].value();
         
-        if (message == "User detail login has already been taken") {
+        if (message != "User created successfully.") {
             
             UIATarget.localTarget().captureScreenWithName("ErrorMessageCG");
             UIALogger.logPass("UI successfully prevent user from submitting.")
@@ -54,6 +54,8 @@ function testCreateUserDuplicateUser() {
     target.frontMostApp().mainWindow().tableViews()[0].cells()[7].secureTextFields()[0].secureTextFields()[0].setValue("testblah")
     
     target.frontMostApp().navigationBar().rightButton().tap();
+    
+    UIATarget.localTarget().delay(2)
     
     target.frontMostApp().navigationBar().leftButton().tap();
     

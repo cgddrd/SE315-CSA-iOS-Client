@@ -28,29 +28,21 @@ function testCreateUserDuplicateUser() {
     
     var target = UIATarget.localTarget();
     target.frontMostApp().navigationBar().rightButton().tap();
-    
-    target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].textFields()[0].tap();
+
     target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].textFields()[0].setValue("Connor")
     
-    target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].textFields()[0].tap();
     target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].textFields()[0].setValue("Goddard")
     
-    target.frontMostApp().mainWindow().tableViews()[0].cells()[2].textFields()[0].textFields()[0].tap();
     target.frontMostApp().mainWindow().tableViews()[0].cells()[2].textFields()[0].textFields()[0].setValue("clg11@aber.ac.uk")
     
-    target.frontMostApp().mainWindow().tableViews()[0].cells()[3].textFields()[0].textFields()[0].tap();
     target.frontMostApp().mainWindow().tableViews()[0].cells()[3].textFields()[0].textFields()[0].setValue("01437891514")
     
-    target.frontMostApp().mainWindow().tableViews()[0].cells()[4].textFields()[0].textFields()[0].tap();
     target.frontMostApp().mainWindow().tableViews()[0].cells()[4].textFields()[0].textFields()[0].setValue("2012")
     
-    target.frontMostApp().mainWindow().tableViews()[0].cells()[5].textFields()[0].textFields()[0].tap();
     target.frontMostApp().mainWindow().tableViews()[0].cells()[5].textFields()[0].textFields()[0].setValue("clg11")
     
-    target.frontMostApp().mainWindow().tableViews()[0].cells()[6].secureTextFields()[0].secureTextFields()[0].tap();
     target.frontMostApp().mainWindow().tableViews()[0].cells()[6].secureTextFields()[0].secureTextFields()[0].setValue("testblah")
     
-    target.frontMostApp().mainWindow().tableViews()[0].cells()[7].secureTextFields()[0].secureTextFields()[0].tap();
     target.frontMostApp().mainWindow().tableViews()[0].cells()[7].secureTextFields()[0].secureTextFields()[0].setValue("testblah")
     
     target.frontMostApp().navigationBar().rightButton().tap();

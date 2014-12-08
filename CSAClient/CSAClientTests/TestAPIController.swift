@@ -24,6 +24,7 @@ class TestAPIController: XCTestCase {
     
     func testCorrectLoginCheck () {
         
+        // CG - `Expectation' object used to confirm the completion of an asynchronous function within a unit test.
         let readyExpectation = expectationWithDescription("ready")
         
         api?.checkLogin("clg11", password: "test123", completionHandler: {
@@ -33,10 +34,12 @@ class TestAPIController: XCTestCase {
             XCTAssertTrue(success, "User should have been accepted")
             XCTAssertEqual(result!["logged_in"] as Bool, true, "User should be logged in.")
             
+            //Once we have finished the async call, inform the test so we can sign this test off.
             readyExpectation.fulfill()
             
         })
         
+        // Wait for a maximum of 5 seconds for the asynchronous function within the test to complete, before failing due to timeout.
         waitForExpectationsWithTimeout(5, { error in
             XCTAssertNil(error, "Error")
         })
@@ -265,6 +268,7 @@ class TestAPIController: XCTestCase {
     
     func testCreateDuplicateUserFailure() {
         
+        // CG - Multiple expectation objects required, one for each async function in the test.
         let readyExpectation1 = expectationWithDescription("ready1")
         let readyExpectation2 = expectationWithDescription("ready2")
         
@@ -634,6 +638,7 @@ class TestAPIController: XCTestCase {
     
     func testCreateAndDeleteUserNoAccess() {
         
+        // CG - Here we are using a performance block to analyse the time taken to the test to complete. 
         self.measureBlock() {
             
             self.api?.credentials = self.api?.generateHTTPAuthString("clg11", password: "test123")

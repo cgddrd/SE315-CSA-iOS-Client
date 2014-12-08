@@ -2,6 +2,8 @@
 //  InternalUserEditViewController.swift
 //  CSAClient
 //
+//  Represents the UI presented to either an administrator or regular to edit the details for a single user.
+//
 //  Created by Connor Goddard on 01/12/2014.
 //  Copyright (c) 2014 Connor Goddard. All rights reserved.
 //
@@ -24,6 +26,7 @@ class InternalUserEditViewController: UITableViewController {
     
     @IBOutlet weak var deleteButtonCell: UITableViewCell!
     
+   
     override func viewWillAppear(animated: Bool) {
         
         // CG - If the current user is not an admin, hide the delete button to prevent them from deleting themselves.
@@ -33,9 +36,12 @@ class InternalUserEditViewController: UITableViewController {
             
         }
         
+         // CG - When loading the UI view controller, we need to firstly retrieve the information about the user from the web service.
         self.api?.getUser(self.currentUserID!, completionHandler: { success, result in
             
             if success {
+                
+                // CG - Extract the user details from the JSON response and load into the UI.
                 
                 self.user = User.getSingleUserFromJSON(result)
                 
@@ -81,9 +87,10 @@ class InternalUserEditViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // CG - Function used to call the APIController in order to send a HTTP DELETE request to the web servcie in order to delete the current user.
     func deleteCurrentUser() {
         
-        // Notice here how we are not having to pass any URL parameters in, default parameter in the function declaration deals with this for us.
+        // Notice here how we are not having to pass any URL parameters in, default parameter in the function declaration for 'deleteUser' deals with this for us.
         self.api?.deleteUser(self.user!.id, completionHandler: {
             
             success, result in

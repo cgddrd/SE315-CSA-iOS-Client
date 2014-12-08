@@ -12,7 +12,6 @@
 		999C33261A286F2900AF2F82 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 999C33251A286F2900AF2F82 /* Images.xcassets */; };
 		999C33291A286F2900AF2F82 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 999C33271A286F2900AF2F82 /* LaunchScreen.xib */; };
 		999C33411A286F9A00AF2F82 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33401A286F9A00AF2F82 /* UserListViewController.swift */; };
-		999C33451A28714C00AF2F82 /* Blank52.png in Resources */ = {isa = PBXBuildFile; fileRef = 999C33441A28714C00AF2F82 /* Blank52.png */; };
 		999C33471A2871C200AF2F82 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33461A2871C200AF2F82 /* User.swift */; };
 		999C33491A28923800AF2F82 /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C33481A28923800AF2F82 /* UserDetailsViewController.swift */; };
 		999C334B1A28A46600AF2F82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 999C334A1A28A46600AF2F82 /* Main.storyboard */; };
@@ -168,7 +167,6 @@
 		999C332E1A286F2900AF2F82 /* CSAClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CSAClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		999C33331A286F2900AF2F82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		999C33401A286F9A00AF2F82 /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
-		999C33441A28714C00AF2F82 /* Blank52.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blank52.png; sourceTree = "<group>"; };
 		999C33461A2871C200AF2F82 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		999C33481A28923800AF2F82 /* UserDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
 		999C334A1A28A46600AF2F82 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = CSAClientTests/Main.storyboard; sourceTree = SOURCE_ROOT; };
@@ -303,7 +301,6 @@
 				996B653F1A29ED9500A556DC /* UserAddViewController.swift */,
 				999C33671A28CB3D00AF2F82 /* APIController.swift */,
 				999C334A1A28A46600AF2F82 /* Main.storyboard */,
-				999C33441A28714C00AF2F82 /* Blank52.png */,
 				999C331E1A286F2900AF2F82 /* AppDelegate.swift */,
 				999C33481A28923800AF2F82 /* UserDetailsViewController.swift */,
 				999C33401A286F9A00AF2F82 /* UserListViewController.swift */,
@@ -1684,7 +1681,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				999C33451A28714C00AF2F82 /* Blank52.png in Resources */,
 				99F7E1D81A3330D100C74F45 /* 29.run.zip in Resources */,
 				99F7E2011A3330D100C74F45 /* 66.run.zip in Resources */,
 				99F7E1D01A3330D100C74F45 /* 21.run.zip in Resources */,

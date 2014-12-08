@@ -24,8 +24,6 @@ function RunUITestsRegularUser(){
     
 }
 
-
-// call to function Main 
 RunUITestsRegularUser();
 
 function testCheckRegularUserDetails() {

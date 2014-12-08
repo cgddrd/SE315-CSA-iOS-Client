@@ -2,6 +2,8 @@
 //  UserDetailsViewController.swift
 //  CSAClient
 //
+//  Represents the "parent" UI controller for the "user details" and "user edit" view controllers.
+//
 //  Created by Connor Goddard on 28/11/2014.
 //  Copyright (c) 2014 Connor Goddard. All rights reserved.
 //
@@ -21,7 +23,7 @@ class UserDetailsViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        
+        // CG - Depending on the child view controller we wish to render, perform appropiate action. 
         if (segue.identifier == "embedUserDetailsSegue") {
             
             var internalUserDetailsController = segue.destinationViewController as? InternalUserDetailsController

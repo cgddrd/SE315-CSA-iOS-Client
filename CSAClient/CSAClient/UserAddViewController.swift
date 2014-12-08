@@ -2,6 +2,8 @@
 //  UserAddViewController.swift
 //  CSAClient
 //
+//  Represents the UI for creating a new user (Form-based)
+//
 //  Created by Connor Goddard on 29/11/2014.
 //  Copyright (c) 2014 Connor Goddard. All rights reserved.
 //
@@ -10,8 +12,10 @@ import UIKit
 
 class UserAddViewController: UIViewController {
     
+    // CG - Optional reference to shared APIController object.
     var api : APIController?
     
+    // CG - Optional reference to the child view controller (embedded within a Container View within this View Container)
     var internalViewController : InternalUserAddViewController?
     
     @IBAction func pressedCancelButton(sender: AnyObject) {
@@ -21,10 +25,12 @@ class UserAddViewController: UIViewController {
         
     }
     
+    // CG - Outlet for 'Done' button tap action.
     @IBAction func pressedDoneButton(sender: AnyObject) {
         
         var view = self.internalViewController
         
+        // CG - Perform validation/sanity check of data inputs on client end. (take some of the work away from the web service)
         if view!.textFirstname.text.isEmpty || view!.textSurname.text.isEmpty || view!.textTelephoneNumber.text.isEmpty || view!.textGradYear.text.isEmpty || view!.textEmailAddress.text.isEmpty || view!.textGradYear.text.isEmpty || view!.textPassword.text.isEmpty || view!.textPasswordConfirmation.text.isEmpty || view!.textUsername.text.isEmpty {
             
             // Create the alert controller
@@ -45,17 +51,15 @@ class UserAddViewController: UIViewController {
             // Create the alert controller
             var alertController = UIAlertController(title: "Error", message: "Password confirmation does not match password.", preferredStyle: .Alert)
             
-            // Create the actions
             var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
             
-            // Add the actions
             alertController.addAction(okAction)
             
-            // CG - Display the alert view.
             self.presentViewController(alertController, animated: true, completion: nil)
         
         } else {
             
+            // CG - Create a dictionary of URL parameters to send to the web service.
             let parameters = [
                 "user": [
                     "surname": "\(view!.textSurname.text)",
@@ -72,12 +76,16 @@ class UserAddViewController: UIViewController {
                 ]
             ]
             
-            api?.postNewUser(urlParams: parameters, completionHandler: {
+            // CG - Create and send a new HTTP POST request to the web service.
+            // CG - Here we provide callback/closure to deal with the response from the the async request.
+            api?.postNewUser(urlParams: parameters, completionHandler: { success, result in
                 
-                success, result in
+                // CG - success = Boolean depicting successful respinse code.
+                // CG - result = Response body data.
                 
                 let alertTitle = success ? "Create New User" : "Error"
                 
+                // CG - If we have errors in the response body, add them to the error message.
                 let alertMessage = success ? "User added successfully" : "\n\n".join(result["errors"] as Array)
                 
                 var alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
@@ -112,7 +120,7 @@ class UserAddViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        
+        // CG - Setup the child view controller that we wish to embed within the Container View object.
         if (segue.identifier == "embedSegue") {
             
             self.internalViewController = segue.destinationViewController as? InternalUserAddViewController

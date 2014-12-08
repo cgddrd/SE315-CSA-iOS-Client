@@ -2,6 +2,8 @@
 //  InternalUserDetailsController.swift
 //  CSAClient
 //
+//  Represents the UI presented to either an administrator or regular to display details for a single user.
+//
 //  Created by Connor Goddard on 30/11/2014.
 //  Copyright (c) 2014 Connor Goddard. All rights reserved.
 //
@@ -28,9 +30,12 @@ class InternalUserDetailsController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         
+        // CG - When loading the UI view controller, we need to firstly retrieve the information about the user from the web service.
         self.api?.getUser(currentUserID!, completionHandler: { success, result in
             
             if success {
+                
+                // CG - Extract the user details from the JSON response and load into the UI.
                 
                 self.user = User.getSingleUserFromJSON(result)
                 
@@ -59,7 +64,7 @@ class InternalUserDetailsController: UITableViewController {
                 
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(alert) in
                     
-                    // CG - If we can't load data, just close the app.
+                    // CG - If we can't load data display the error message and exit the app.
                     exit(0)
                     
                 }))

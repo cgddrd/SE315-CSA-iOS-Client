@@ -1,6 +1,8 @@
 //
 //  ViewController.swift
-//  HelloWorld
+//  CSAClient
+//
+//  Represents the UI view controller tasked with listing all current CSA users (accessible to administrators only)
 //
 //  Created by Connor Goddard on 27/11/2014.
 //  Copyright (c) 2014 Connor Goddard. All rights reserved.
@@ -31,10 +33,10 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
             
         } else if (segue.identifier == "ShowUserDetailsViewControllerSegue") {
             
-            // CG - Get the index of the currently selected album (via the UITableView cell)
+            // CG - Get the index of the currently selected User (via the UITableView cell)
             var userIndex = appsTableView!.indexPathForSelectedRow()!.row
             
-            //CG - Get the current album from the array (using the index just obtained)
+            //CG - Get the current User from the array (using the index just obtained)
             var selectedUser = self.users[userIndex]
             
             var userDetailsViewController = segue.destinationViewController as UserDetailsViewController
@@ -48,20 +50,23 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
         
     }
     
-    // CG - Simply return the number of resultant objects from the UITableView data store.
+    // CG - Return the number of resultant objects from the UITableView data store.
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        // CG - Update to return number of albums.
         return users.count
     }
     
-    // CG - Render each of the UITableView cells.
+    // CG - Renders each of the UITableView cells.
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        // CG - By reusing "protoype" cells rather than creating a cell for each user, we ensure that the user interface remains fast and responsive regradless of the number of entries. - http://www.ioscreator.com/tutorials/prototype-cells-tableview-tutorial-ios8-swift
         
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(prototypeCellIdentifier) as UITableViewCell
     
+        // CG - Retrieve the next 'User' object from the collection of users to render the current cell.
         let user = self.users[indexPath.row];
         
+        // CG - Set the text of the cell to the user's detais.
         cell.textLabel?.text = "\(user.firstName) \(user.lastName)"
         
         cell.detailTextLabel?.text = user.emailAddress

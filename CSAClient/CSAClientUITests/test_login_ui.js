@@ -29,15 +29,7 @@ function testRejectInvalidUserLogin() {
    
     var target = UIATarget.localTarget();
     
-    target.frontMostApp().mainWindow().buttons()["Log In"].tap();
-    
-    UIATarget.localTarget().delay(2)
-    
-    target.frontMostApp().mainWindow().textFields()[0].textFields()[0].tap();
-    
     target.frontMostApp().mainWindow().textFields()[0].textFields()[0].setValue("fakeusername")
-    
-    target.frontMostApp().mainWindow().secureTextFields()[0].secureTextFields()[0].tap();
     
     target.frontMostApp().mainWindow().secureTextFields()[0].secureTextFields()[0].setValue("fakepassword")
     
@@ -51,11 +43,7 @@ function testSuccessfulAdminUserLogin() {
     
     var target = UIATarget.localTarget();
     
-    target.frontMostApp().mainWindow().textFields()[0].textFields()[0].tap();
-    
     target.frontMostApp().mainWindow().textFields()[0].textFields()[0].setValue("admin")
-    
-    target.frontMostApp().mainWindow().secureTextFields()[0].secureTextFields()[0].tap();
     
     target.frontMostApp().mainWindow().secureTextFields()[0].secureTextFields()[0].setValue("taliesin")
     
@@ -69,11 +57,7 @@ function testSuccessfulRegularUserLogin() {
     
     var target = UIATarget.localTarget();
     
-    target.frontMostApp().mainWindow().textFields()[0].textFields()[0].tap();
-    
     target.frontMostApp().mainWindow().textFields()[0].textFields()[0].setValue("clg11")
-    
-    target.frontMostApp().mainWindow().secureTextFields()[0].secureTextFields()[0].tap();
     
     target.frontMostApp().mainWindow().secureTextFields()[0].secureTextFields()[0].setValue("test123")
     

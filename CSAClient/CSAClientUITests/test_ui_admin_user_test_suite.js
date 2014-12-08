@@ -23,7 +23,5 @@ function RunUITestsAdminUser(){
 
 };
 
-// call to function Main 
-
 RunUITestsAdminUser();
 
